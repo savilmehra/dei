@@ -1,0 +1,14 @@
+{
+"command":"flutter gen-l10n",
+
+    "themeSettingsTitle": "App Theme Settings",
+ "darkTheme":"Dark Theme",
+ "home":"Home Page",
+ "lightTheme":"Light Theme",
+ "customTheme":"Custom Theme",
+ "theme_setting":"Theme Setting",
+ "web_view":"WebView",
+ "language":"Language",
+ "english":"English",
+  "hindi":"Hindi"
+}
