@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 
 import '../features/products_showcase/model/products_response.dart';
@@ -17,6 +19,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: EdgeInsets.only(
 
@@ -55,7 +58,7 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "\$${product.id}",
+                 product.priceRange!.maximumPrice!.finalPrice!.value.toString()??"",
                   style:   Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.teal),
                 ),
               /*  InkWell(

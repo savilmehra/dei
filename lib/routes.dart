@@ -2,6 +2,8 @@
 
 import 'package:dei/features/app_settings/theme_settings_page.dart';
 import 'package:dei/features/home/ui/webview_page.dart';
+import 'package:dei/universal/authentication/local_authentication.dart';
+
 import 'package:flutter/cupertino.dart';
 
 import 'features/app_settings/language_setting_page.dart';
@@ -10,7 +12,6 @@ import 'features/login/ui/splash_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
   HomePage.routeName: (context) => HomePage(),
-
   LanguageSettingPage.routeName:(context) => LanguageSettingPage(),
   WebViewPage.routeName: (context) => WebViewPage(),
   SplashScreen.routeName: (context) => SplashScreen(),

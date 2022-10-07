@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+
 import '../../../universal/graphql/graph_ql_service.dart';
+import '../../home/ui/home_page.dart';
 import '../api/product_quries.dart';
 import '../bloc/product_cubit.dart';
 import '../bloc/states.dart';
@@ -27,12 +29,9 @@ class ProductShowCasePresenter extends StatefulWidget {
 class ProductShowCasteState extends State<ProductShowCasePresenter> {
   @override
   void initState() {
-    BlocProvider.of<ProductCubit>(context).getData(
-        requestType: RequestType.query,
-        header: {'Store': 'english'},
-        queryString: searchQuery("watch", 4),
-        token: '4vuve1vw4gcf1b09u7gmzetz8vdkevua',
-        getData: () {});
+
+    BlocProvider.of<ProductCubit>(context).getLocalData();
+
     super.initState();
   }
 
@@ -41,7 +40,9 @@ class ProductShowCasteState extends State<ProductShowCasePresenter> {
     return BlocBuilder<ProductCubit, MainState>(builder: (context, state) {
       return ProductShowCaseWidget(
         callBack: (Items item) {
-          BlocProvider.of<ProductCubit>(context).deleteItem(item);
+
+
+         BlocProvider.of<ProductCubit>(context).deleteItem(item);
         },
         height: widget.height,
         listType: widget.listType,

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "262363266540",
+    "project_id": "deidemo",
+    "storage_bucket": "deidemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262363266540:android:5acfd287a099c6743754c9",
+        "android_client_info": {
+          "package_name": "dei.com.dei"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262363266540-hf25otp95gst8s4t1gpke9jrg4rhh872.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwnl9xAJ-xYdbmnJwO9KOzjrnoAKSyXNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "262363266540-hf25otp95gst8s4t1gpke9jrg4rhh872.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

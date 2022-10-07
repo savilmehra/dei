@@ -30,6 +30,7 @@ class ProductResponse extends JsonResponseModel {
 }
 
 @Entity()
+@Sync()
 class Products extends JsonResponseModel {
   String? sTypename;
   List<Items>? items;
@@ -71,11 +72,134 @@ class Products extends JsonResponseModel {
 }
 
 @Entity()
+@Sync()
+class PriceRange {
 
-class Items {
   @Id()
-  int? idDb;
-  @Unique(onConflict: ConflictStrategy.replace)
+  int? id;
+  String? sTypename;
+  MinimumPrice? minimumPrice;
+  MinimumPrice? maximumPrice;
+
+  PriceRange({this.sTypename, this.minimumPrice, this.maximumPrice,this.id=0});
+
+  PriceRange.fromJson(Map<String, dynamic> json) {
+    sTypename = json['__typename'];
+    minimumPrice = json['minimum_price'] != null
+        ? new MinimumPrice.fromJson(json['minimum_price'])
+        : null;
+    maximumPrice = json['maximum_price'] != null
+        ? new MinimumPrice.fromJson(json['maximum_price'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['__typename'] = this.sTypename;
+    if (this.minimumPrice != null) {
+      data['minimum_price'] = this.minimumPrice!.toJson();
+    }
+    if (this.maximumPrice != null) {
+      data['maximum_price'] = this.maximumPrice!.toJson();
+    }
+    return data;
+  }
+}
+@Entity()
+@Sync()
+class MinimumPrice {
+  @Id()
+  int? id;
+  String? sTypename;
+  RegularPrice? regularPrice;
+  RegularPrice? finalPrice;
+  Discount? discount;
+
+  MinimumPrice(
+      {this.sTypename, this.regularPrice, this.finalPrice, this.discount,this.id=0});
+
+  MinimumPrice.fromJson(Map<String, dynamic> json) {
+    sTypename = json['__typename'];
+    regularPrice = json['regular_price'] != null
+        ? new RegularPrice.fromJson(json['regular_price'])
+        : null;
+    finalPrice = json['final_price'] != null
+        ? new RegularPrice.fromJson(json['final_price'])
+        : null;
+    discount = json['discount'] != null
+        ? new Discount.fromJson(json['discount'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['__typename'] = this.sTypename;
+    if (this.regularPrice != null) {
+      data['regular_price'] = this.regularPrice!.toJson();
+    }
+    if (this.finalPrice != null) {
+      data['final_price'] = this.finalPrice!.toJson();
+    }
+    if (this.discount != null) {
+      data['discount'] = this.discount!.toJson();
+    }
+    return data;
+  }
+}
+@Entity()
+@Sync()
+class RegularPrice {
+  String? sTypename;
+  int? value;
+  String? currency;
+  @Id()
+  int? id;
+  RegularPrice({this.sTypename, this.value, this.currency,this.id=0});
+
+  RegularPrice.fromJson(Map<String, dynamic> json) {
+    sTypename = json['__typename'];
+    value = json['value'];
+    currency = json['currency'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['__typename'] = this.sTypename;
+    data['value'] = this.value;
+    data['currency'] = this.currency;
+    return data;
+  }
+}
+@Entity()
+@Sync()
+class Discount {
+  String? sTypename;
+  num? amountOff;
+  num? percentOff;
+  @Id()
+  int? id;
+  Discount({this.sTypename, this.amountOff, this.percentOff,this.id=0});
+
+  Discount.fromJson(Map<String, dynamic> json) {
+    sTypename = json['__typename'];
+    amountOff = json['amount_off'];
+    percentOff = json['percent_off'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['__typename'] = this.sTypename;
+    data['amount_off'] = this.amountOff;
+    data['percent_off'] = this.percentOff;
+    return data;
+  }
+}
+@Entity()
+@Sync()
+class Items {
+
+
+  @Id(assignable: true)
   int? id;
   String? sku;
   String? name;
@@ -84,21 +208,37 @@ class Items {
   String? sTypename;
   @Transient()
   Image? thumbnail;
+   @Transient()
+  PriceRange? priceRange;
 
   List<String>? priceTiers;
 
   Items(
-      {this.idDb = 0,
-      this.id,
-      this.sku,
-      this.name,
-      this.urlKey,
-      this.stockStatus,
-      this.sTypename,
-      this.thumbnail,
-      this.priceTiers});
+      {
+        this.id=0,
+        this.sku,
+        this.name,
+        this.urlKey,
+        this.stockStatus,
+        this.sTypename,
+        this.thumbnail,
+        this.priceRange,
+        this.priceTiers});
+
+
+  String? get priceObject => priceRange == null ? null : json.encode(priceRange);
+
+  set priceObject(String? value) {
+    if (value == null) {
+      priceRange = null;
+    } else {
+      priceRange = PriceRange.fromJson(jsonDecode(value));
+    }
+  }
+
 
   String? get dbImage => thumbnail == null ? null : json.encode(thumbnail);
+
 
   set dbImage(String? value) {
     if (value == null) {
@@ -110,6 +250,9 @@ class Items {
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+     priceRange = json['price_range'] != null
+        ? new PriceRange.fromJson(json['price_range'])
+        : null;
     sku = json['sku'];
     name = json['name'];
     urlKey = json['url_key'];
@@ -135,7 +278,9 @@ class Items {
     data['url_key'] = this.urlKey;
     data['stock_status'] = this.stockStatus;
     data['__typename'] = this.sTypename;
-
+     if (this.priceRange != null) {
+      data['price_range'] = this.priceRange?.toJson();
+    }
     if (this.thumbnail != null) {
       data['thumbnail'] = this.thumbnail!.toJson();
     }
@@ -146,9 +291,8 @@ class Items {
     return data;
   }
 }
-
 @Entity()
-
+@Sync()
 class Image {
   @Id()
   int? id;

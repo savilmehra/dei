@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus_windows
+  local_auth_windows
   objectbox_sync_flutter_libs
 )
 

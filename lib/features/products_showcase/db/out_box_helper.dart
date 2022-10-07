@@ -23,13 +23,15 @@ import 'package:objectbox/objectbox.dart';
 ///   ..offset = 10
 ///   ..limit = 5;
 ///   List<String> emails = query.property(User_.email).find(); just to find list of particular variable
+///flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
+
 class OutBoxHelper {
   late Store _store;
 
   late Stream<List<Items>?> stream;
 
   OutBoxHelper() {
-    getApplicationDocumentsDirectory().then((value) {
+/*    getApplicationDocumentsDirectory().then((value) {
       _store = Store(getObjectBoxModel(),
           directory: join(value.path, "PRODUCT_TABLE"));
 
@@ -38,16 +40,14 @@ class OutBoxHelper {
           .query()
           .watch(triggerImmediately: true)
           .map((event) => event.find());
-    });
+    });*/
   }
   Future<int> update(Items item) async {
     return _store.box<Items>().put(item);
   }
 
 
-  Query<Items?> checkIfObjectAlreadyStored(int id) {
-    return _store.box<Items>().query(Items_.id.equals(id)).build();
-  }
+
 
   Future<List<int>> insert(List<Items> products) async {
 

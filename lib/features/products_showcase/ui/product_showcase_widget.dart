@@ -98,7 +98,7 @@ class ProductShowCaseWidget extends StatelessWidget {
               mainAxisSpacing: 3.0,
               crossAxisSpacing: 3.0,
               childAspectRatio: 0.75,
-              crossAxisCount: 2),
+              crossAxisCount:2),
           itemBuilder: (_, index) {
             final item = list[index];
             return InkWell(

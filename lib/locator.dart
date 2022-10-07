@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/products_showcase/db/out_box_helper.dart';
+import 'features/products_showcase/db/sync_client_outbox.dart';
 import 'locator.config.dart';
 
 final getIt = GetIt.instance;
@@ -17,6 +18,7 @@ abstract class InjectionModule {
 @injectableInit
 Future<void> configureInjection(String env) async {
   getIt.registerSingleton<OutBoxHelper>(OutBoxHelper());
+  getIt.registerSingleton<ObjectBoxSyncClient>(ObjectBoxSyncClient());
   await $initGetIt(getIt, environment: env);
 }
 

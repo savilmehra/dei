@@ -62,13 +62,13 @@ class GraphQLClientService {
     String query, {
     Map<String, dynamic>? variables,
   }) async {
-    log(query);
+   // log(query);
     final options = MutationOptions(
       document: gql(query),
       fetchPolicy: fetchPolicy,
     );
     QueryResult? result = await _client.mutate(options);
-      log(result .toString());
+     // log(result .toString());
     return result;
   }
 

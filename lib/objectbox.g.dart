@@ -20,33 +20,52 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 1033399571085243424),
-      name: 'Image',
-      lastPropertyId: const IdUid(5, 4634485322703494321),
-      flags: 0,
+      id: const IdUid(1, 8513388231237838606),
+      name: 'Discount',
+      lastPropertyId: const IdUid(2, 2650762306106325431),
+      flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 575084472038923394),
-            name: 'id',
-            type: 6,
-            flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 8388238552740659499),
+            id: const IdUid(1, 8198443454987073745),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 1401014433051722981),
+            id: const IdUid(2, 2650762306106325431),
+            name: 'id',
+            type: 6,
+            flags: 1)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(2, 6614032641467591123),
+      name: 'Image',
+      lastPropertyId: const IdUid(5, 1218527737109081754),
+      flags: 2,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 1235202157095596957),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 1159060938456146578),
+            name: 'sTypename',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 1860263980960974179),
             name: 'url',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 2169437100296292200),
+            id: const IdUid(4, 7929098717964918394),
             name: 'label',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 4634485322703494321),
+            id: const IdUid(5, 1218527737109081754),
             name: 'position',
             type: 9,
             flags: 0)
@@ -54,54 +73,53 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(2, 6186542403052215691),
+      id: const IdUid(3, 4956975171356556335),
       name: 'Items',
-      lastPropertyId: const IdUid(9, 4590998260158154307),
-      flags: 0,
+      lastPropertyId: const IdUid(9, 766950506528799416),
+      flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 2732401097323614830),
-            name: 'idDb',
-            type: 6,
-            flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 1361485194321662122),
+            id: const IdUid(1, 6765476300805304655),
             name: 'id',
             type: 6,
-            flags: 32808,
-            indexId: const IdUid(1, 8653259215852939222)),
+            flags: 129),
         ModelProperty(
-            id: const IdUid(3, 8629085506609330159),
+            id: const IdUid(2, 7812367802912567640),
             name: 'sku',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 2916113340586402501),
+            id: const IdUid(3, 7631050250733795121),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 3856709808549994650),
+            id: const IdUid(4, 2517411672036901066),
             name: 'urlKey',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 3954858331642750811),
+            id: const IdUid(5, 7549729805000186278),
             name: 'stockStatus',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 5292109394111854948),
+            id: const IdUid(6, 8728730564066449135),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(8, 7607823239188754539),
+            id: const IdUid(7, 2311103978443144908),
             name: 'priceTiers',
             type: 30,
             flags: 0),
         ModelProperty(
-            id: const IdUid(9, 4590998260158154307),
+            id: const IdUid(8, 4545538315739462241),
+            name: 'priceObject',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(9, 766950506528799416),
             name: 'dbImage',
             type: 9,
             flags: 0)
@@ -109,23 +127,90 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(3, 9000613329338761668),
-      name: 'Products',
-      lastPropertyId: const IdUid(3, 7247927841292117755),
-      flags: 0,
+      id: const IdUid(4, 5389821044682416778),
+      name: 'MinimumPrice',
+      lastPropertyId: const IdUid(2, 6471229015272663823),
+      flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 2134595467490173343),
+            id: const IdUid(1, 9068066612709996895),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 6471229015272663823),
+            name: 'sTypename',
+            type: 9,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(5, 3259801095276722632),
+      name: 'PriceRange',
+      lastPropertyId: const IdUid(2, 4783772360346668822),
+      flags: 2,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 3544324686553098977),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 4783772360346668822),
+            name: 'sTypename',
+            type: 9,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(6, 2879247424119327319),
+      name: 'Products',
+      lastPropertyId: const IdUid(3, 3970030849737216985),
+      flags: 2,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 6109650660679993783),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(2, 6452023501719277048),
+            id: const IdUid(2, 3087387582874539496),
             name: 'totalCount',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 7247927841292117755),
+            id: const IdUid(3, 3970030849737216985),
+            name: 'id',
+            type: 6,
+            flags: 1)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(7, 2624652506097524625),
+      name: 'RegularPrice',
+      lastPropertyId: const IdUid(4, 3943323417002691496),
+      flags: 2,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 2320782261758657970),
+            name: 'sTypename',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(2, 4452369094806305253),
+            name: 'value',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 8487880133834934775),
+            name: 'currency',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 3943323417002691496),
             name: 'id',
             type: 6,
             flags: 1)
@@ -154,8 +239,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(3, 9000613329338761668),
-      lastIndexId: const IdUid(1, 8653259215852939222),
+      lastEntityId: const IdUid(7, 2624652506097524625),
+      lastIndexId: const IdUid(0, 0),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
@@ -167,8 +252,38 @@ ModelDefinition getObjectBoxModel() {
       version: 1);
 
   final bindings = <Type, EntityDefinition>{
-    Image: EntityDefinition<Image>(
+    Discount: EntityDefinition<Discount>(
         model: _entities[0],
+        toOneRelations: (Discount object) => [],
+        toManyRelations: (Discount object) => {},
+        getId: (Discount object) => object.id,
+        setId: (Discount object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Discount object, fb.Builder fbb) {
+          final sTypenameOffset = object.sTypename == null
+              ? null
+              : fbb.writeString(object.sTypename!);
+          fbb.startTable(3);
+          fbb.addOffset(0, sTypenameOffset);
+          fbb.addInt64(1, object.id ?? 0);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Discount(
+              sTypename: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 4),
+              id: const fb.Int64Reader()
+                  .vTableGetNullable(buffer, rootOffset, 6));
+
+          return object;
+        }),
+    Image: EntityDefinition<Image>(
+        model: _entities[1],
         toOneRelations: (Image object) => [],
         toManyRelations: (Image object) => {},
         getId: (Image object) => object.id,
@@ -214,12 +329,12 @@ ModelDefinition getObjectBoxModel() {
           return object;
         }),
     Items: EntityDefinition<Items>(
-        model: _entities[1],
+        model: _entities[2],
         toOneRelations: (Items object) => [],
         toManyRelations: (Items object) => {},
-        getId: (Items object) => object.idDb,
+        getId: (Items object) => object.id,
         setId: (Items object, int id) {
-          object.idDb = id;
+          object.id = id;
         },
         objectToFB: (Items object, fb.Builder fbb) {
           final skuOffset =
@@ -239,49 +354,112 @@ ModelDefinition getObjectBoxModel() {
               : fbb.writeList(object.priceTiers!
                   .map(fbb.writeString)
                   .toList(growable: false));
+          final priceObjectOffset = object.priceObject == null
+              ? null
+              : fbb.writeString(object.priceObject!);
           final dbImageOffset =
               object.dbImage == null ? null : fbb.writeString(object.dbImage!);
           fbb.startTable(10);
-          fbb.addInt64(0, object.idDb ?? 0);
-          fbb.addInt64(1, object.id);
-          fbb.addOffset(2, skuOffset);
-          fbb.addOffset(3, nameOffset);
-          fbb.addOffset(4, urlKeyOffset);
-          fbb.addOffset(5, stockStatusOffset);
-          fbb.addOffset(6, sTypenameOffset);
-          fbb.addOffset(7, priceTiersOffset);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addOffset(1, skuOffset);
+          fbb.addOffset(2, nameOffset);
+          fbb.addOffset(3, urlKeyOffset);
+          fbb.addOffset(4, stockStatusOffset);
+          fbb.addOffset(5, sTypenameOffset);
+          fbb.addOffset(6, priceTiersOffset);
+          fbb.addOffset(7, priceObjectOffset);
           fbb.addOffset(8, dbImageOffset);
           fbb.finish(fbb.endTable());
-          return object.idDb ?? 0;
+          return object.id ?? 0;
         },
         objectFromFB: (Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
 
           final object = Items(
-              idDb: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 4),
               id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 6),
+                  .vTableGetNullable(buffer, rootOffset, 4),
               sku: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 8),
+                  .vTableGetNullable(buffer, rootOffset, 6),
               name: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 10),
+                  .vTableGetNullable(buffer, rootOffset, 8),
               urlKey: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 12),
+                  .vTableGetNullable(buffer, rootOffset, 10),
               stockStatus: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 14),
+                  .vTableGetNullable(buffer, rootOffset, 12),
               sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 16),
+                  .vTableGetNullable(buffer, rootOffset, 14),
               priceTiers: const fb.ListReader<String>(fb.StringReader(asciiOptimization: true), lazy: false)
-                  .vTableGetNullable(buffer, rootOffset, 18))
+                  .vTableGetNullable(buffer, rootOffset, 16))
+            ..priceObject = const fb.StringReader(asciiOptimization: true)
+                .vTableGetNullable(buffer, rootOffset, 18)
             ..dbImage = const fb.StringReader(asciiOptimization: true)
                 .vTableGetNullable(buffer, rootOffset, 20);
 
           return object;
         }),
+    MinimumPrice: EntityDefinition<MinimumPrice>(
+        model: _entities[3],
+        toOneRelations: (MinimumPrice object) => [],
+        toManyRelations: (MinimumPrice object) => {},
+        getId: (MinimumPrice object) => object.id,
+        setId: (MinimumPrice object, int id) {
+          object.id = id;
+        },
+        objectToFB: (MinimumPrice object, fb.Builder fbb) {
+          final sTypenameOffset = object.sTypename == null
+              ? null
+              : fbb.writeString(object.sTypename!);
+          fbb.startTable(3);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addOffset(1, sTypenameOffset);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = MinimumPrice(
+              sTypename: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 6),
+              id: const fb.Int64Reader()
+                  .vTableGetNullable(buffer, rootOffset, 4));
+
+          return object;
+        }),
+    PriceRange: EntityDefinition<PriceRange>(
+        model: _entities[4],
+        toOneRelations: (PriceRange object) => [],
+        toManyRelations: (PriceRange object) => {},
+        getId: (PriceRange object) => object.id,
+        setId: (PriceRange object, int id) {
+          object.id = id;
+        },
+        objectToFB: (PriceRange object, fb.Builder fbb) {
+          final sTypenameOffset = object.sTypename == null
+              ? null
+              : fbb.writeString(object.sTypename!);
+          fbb.startTable(3);
+          fbb.addInt64(0, object.id ?? 0);
+          fbb.addOffset(1, sTypenameOffset);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = PriceRange(
+              sTypename: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 6),
+              id: const fb.Int64Reader()
+                  .vTableGetNullable(buffer, rootOffset, 4));
+
+          return object;
+        }),
     Products: EntityDefinition<Products>(
-        model: _entities[2],
+        model: _entities[5],
         toOneRelations: (Products object) => [],
         toManyRelations: (Products object) => {},
         getId: (Products object) => object.id,
@@ -312,75 +490,166 @@ ModelDefinition getObjectBoxModel() {
                   .vTableGetNullable(buffer, rootOffset, 6));
 
           return object;
+        }),
+    RegularPrice: EntityDefinition<RegularPrice>(
+        model: _entities[6],
+        toOneRelations: (RegularPrice object) => [],
+        toManyRelations: (RegularPrice object) => {},
+        getId: (RegularPrice object) => object.id,
+        setId: (RegularPrice object, int id) {
+          object.id = id;
+        },
+        objectToFB: (RegularPrice object, fb.Builder fbb) {
+          final sTypenameOffset = object.sTypename == null
+              ? null
+              : fbb.writeString(object.sTypename!);
+          final currencyOffset = object.currency == null
+              ? null
+              : fbb.writeString(object.currency!);
+          fbb.startTable(5);
+          fbb.addOffset(0, sTypenameOffset);
+          fbb.addInt64(1, object.value);
+          fbb.addOffset(2, currencyOffset);
+          fbb.addInt64(3, object.id ?? 0);
+          fbb.finish(fbb.endTable());
+          return object.id ?? 0;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = RegularPrice(
+              sTypename: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 4),
+              value: const fb.Int64Reader()
+                  .vTableGetNullable(buffer, rootOffset, 6),
+              currency: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 8),
+              id: const fb.Int64Reader()
+                  .vTableGetNullable(buffer, rootOffset, 10));
+
+          return object;
         })
   };
 
   return ModelDefinition(model, bindings);
 }
 
+/// [Discount] entity fields to define ObjectBox queries.
+class Discount_ {
+  /// see [Discount.sTypename]
+  static final sTypename =
+      QueryStringProperty<Discount>(_entities[0].properties[0]);
+
+  /// see [Discount.id]
+  static final id = QueryIntegerProperty<Discount>(_entities[0].properties[1]);
+}
+
 /// [Image] entity fields to define ObjectBox queries.
 class Image_ {
   /// see [Image.id]
-  static final id = QueryIntegerProperty<Image>(_entities[0].properties[0]);
+  static final id = QueryIntegerProperty<Image>(_entities[1].properties[0]);
 
   /// see [Image.sTypename]
   static final sTypename =
-      QueryStringProperty<Image>(_entities[0].properties[1]);
+      QueryStringProperty<Image>(_entities[1].properties[1]);
 
   /// see [Image.url]
-  static final url = QueryStringProperty<Image>(_entities[0].properties[2]);
+  static final url = QueryStringProperty<Image>(_entities[1].properties[2]);
 
   /// see [Image.label]
-  static final label = QueryStringProperty<Image>(_entities[0].properties[3]);
+  static final label = QueryStringProperty<Image>(_entities[1].properties[3]);
 
   /// see [Image.position]
   static final position =
-      QueryStringProperty<Image>(_entities[0].properties[4]);
+      QueryStringProperty<Image>(_entities[1].properties[4]);
 }
 
 /// [Items] entity fields to define ObjectBox queries.
 class Items_ {
-  /// see [Items.idDb]
-  static final idDb = QueryIntegerProperty<Items>(_entities[1].properties[0]);
-
   /// see [Items.id]
-  static final id = QueryIntegerProperty<Items>(_entities[1].properties[1]);
+  static final id = QueryIntegerProperty<Items>(_entities[2].properties[0]);
 
   /// see [Items.sku]
-  static final sku = QueryStringProperty<Items>(_entities[1].properties[2]);
+  static final sku = QueryStringProperty<Items>(_entities[2].properties[1]);
 
   /// see [Items.name]
-  static final name = QueryStringProperty<Items>(_entities[1].properties[3]);
+  static final name = QueryStringProperty<Items>(_entities[2].properties[2]);
 
   /// see [Items.urlKey]
-  static final urlKey = QueryStringProperty<Items>(_entities[1].properties[4]);
+  static final urlKey = QueryStringProperty<Items>(_entities[2].properties[3]);
 
   /// see [Items.stockStatus]
   static final stockStatus =
-      QueryStringProperty<Items>(_entities[1].properties[5]);
+      QueryStringProperty<Items>(_entities[2].properties[4]);
 
   /// see [Items.sTypename]
   static final sTypename =
-      QueryStringProperty<Items>(_entities[1].properties[6]);
+      QueryStringProperty<Items>(_entities[2].properties[5]);
 
   /// see [Items.priceTiers]
   static final priceTiers =
-      QueryStringVectorProperty<Items>(_entities[1].properties[7]);
+      QueryStringVectorProperty<Items>(_entities[2].properties[6]);
+
+  /// see [Items.priceObject]
+  static final priceObject =
+      QueryStringProperty<Items>(_entities[2].properties[7]);
 
   /// see [Items.dbImage]
-  static final dbImage = QueryStringProperty<Items>(_entities[1].properties[8]);
+  static final dbImage = QueryStringProperty<Items>(_entities[2].properties[8]);
+}
+
+/// [MinimumPrice] entity fields to define ObjectBox queries.
+class MinimumPrice_ {
+  /// see [MinimumPrice.id]
+  static final id =
+      QueryIntegerProperty<MinimumPrice>(_entities[3].properties[0]);
+
+  /// see [MinimumPrice.sTypename]
+  static final sTypename =
+      QueryStringProperty<MinimumPrice>(_entities[3].properties[1]);
+}
+
+/// [PriceRange] entity fields to define ObjectBox queries.
+class PriceRange_ {
+  /// see [PriceRange.id]
+  static final id =
+      QueryIntegerProperty<PriceRange>(_entities[4].properties[0]);
+
+  /// see [PriceRange.sTypename]
+  static final sTypename =
+      QueryStringProperty<PriceRange>(_entities[4].properties[1]);
 }
 
 /// [Products] entity fields to define ObjectBox queries.
 class Products_ {
   /// see [Products.sTypename]
   static final sTypename =
-      QueryStringProperty<Products>(_entities[2].properties[0]);
+      QueryStringProperty<Products>(_entities[5].properties[0]);
 
   /// see [Products.totalCount]
   static final totalCount =
-      QueryIntegerProperty<Products>(_entities[2].properties[1]);
+      QueryIntegerProperty<Products>(_entities[5].properties[1]);
 
   /// see [Products.id]
-  static final id = QueryIntegerProperty<Products>(_entities[2].properties[2]);
+  static final id = QueryIntegerProperty<Products>(_entities[5].properties[2]);
+}
+
+/// [RegularPrice] entity fields to define ObjectBox queries.
+class RegularPrice_ {
+  /// see [RegularPrice.sTypename]
+  static final sTypename =
+      QueryStringProperty<RegularPrice>(_entities[6].properties[0]);
+
+  /// see [RegularPrice.value]
+  static final value =
+      QueryIntegerProperty<RegularPrice>(_entities[6].properties[1]);
+
+  /// see [RegularPrice.currency]
+  static final currency =
+      QueryStringProperty<RegularPrice>(_entities[6].properties[2]);
+
+  /// see [RegularPrice.id]
+  static final id =
+      QueryIntegerProperty<RegularPrice>(_entities[6].properties[3]);
 }
