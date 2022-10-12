@@ -197,10 +197,9 @@ class Discount {
 @Entity()
 @Sync()
 class Items {
-
-
   @Id(assignable: true)
   int? id;
+  @Unique(onConflict: ConflictStrategy.replace)
   String? sku;
   String? name;
   String? urlKey;
@@ -215,7 +214,7 @@ class Items {
 
   Items(
       {
-        this.id=0,
+        this.id,
         this.sku,
         this.name,
         this.urlKey,

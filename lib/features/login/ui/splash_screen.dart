@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../../utilities/size_config.dart';
 import '../../home/ui/home_page.dart';
-
+import 'package:config/Config.dart';
 class SplashScreen extends StatefulWidget {
   static String routeName = '/splashScreen';
 
@@ -35,7 +35,7 @@ class SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "welcome",
+            APP_NAME,
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ],

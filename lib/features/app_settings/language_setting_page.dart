@@ -5,9 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../locator.dart';
+import '../../universal/localization.dart';
 import '../../universal/themes/app_themes.dart';
 import '../../utilities/string_constatnts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class LanguageSettingPage extends StatefulWidget {
   static String routeName = '/languageSettingPage';
@@ -49,7 +50,7 @@ class ThemeSettingsPageState extends State<LanguageSettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).themeSettingsTitle),
+        title: Text(AppLocalizations.of(context)!.trans("themeSettingsTitle")),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -61,7 +62,8 @@ class ThemeSettingsPageState extends State<LanguageSettingPage> {
 
             Card(
               child: ListTile(
-                title: Text(AppLocalizations.of(context).english),
+                title: Text(AppLocalizations.of(context)!.trans("english")),
+
                 trailing: Checkbox(
                   value: isEnglish,
                   onChanged: (bool? value) {
@@ -82,7 +84,7 @@ class ThemeSettingsPageState extends State<LanguageSettingPage> {
             ),
             Card(
               child: ListTile(
-                title: Text(AppLocalizations.of(context).hindi),
+                title: Text(AppLocalizations.of(context)!.trans("hindi")),
                 trailing: Checkbox(
                   value: !isEnglish,
                   onChanged: (bool? value) {

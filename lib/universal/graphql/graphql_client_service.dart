@@ -54,7 +54,7 @@ class GraphQLClientService {
 
    //  print("------------------------------$query");
     QueryResult? result = await _client.query(options);
-   //  log(jsonEncode(result.data));
+    log(jsonEncode(result.data));
     return result;
   }
 
@@ -68,7 +68,7 @@ class GraphQLClientService {
       fetchPolicy: fetchPolicy,
     );
     QueryResult? result = await _client.mutate(options);
-     // log(result .toString());
+      log(result .toString());
     return result;
   }
 

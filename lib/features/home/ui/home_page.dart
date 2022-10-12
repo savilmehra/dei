@@ -8,10 +8,11 @@ import 'package:image_picker/image_picker.dart';
 import '../../../components/product_card.dart';
 import '../../../universal/authentication/local_authentication.dart';
 import '../../../universal/graphql/graph_ql_service.dart';
+import '../../../universal/localization.dart';
 import '../../../utilities/size_config.dart';
 import '../../app_settings/language_setting_page.dart';
 import '../../app_settings/theme_settings_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../../products_showcase/api/product_quries.dart';
 import '../../products_showcase/bloc/product_cubit.dart';
@@ -73,7 +74,7 @@ late BuildContext ctx;
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).home),
+          title: Text(AppLocalizations.of(context)!.trans("home")),
           actions: [
             IconButton(
                 onPressed: () {
@@ -106,7 +107,7 @@ late BuildContext ctx;
                 create: (_) => cubit,
                 child: ProductShowCasePresenter(
                   listType: ListType.grid,
-                  title: AppLocalizations.of(context).home,
+                  title:AppLocalizations.of(context)!.trans("home"),
                   listItem: getListItem,
                 ),
               ),
@@ -139,12 +140,12 @@ late BuildContext ctx;
         child: Center(
           child: Text(
             index == 0
-                ? AppLocalizations.of(context).theme_setting
+                ? AppLocalizations.of(context)!.trans("theme_setting")
                 : index == 1
-                    ? AppLocalizations.of(context).web_view
+                    ? AppLocalizations.of(context)!.trans("web_view")
                     : index == 3
                         ? "Authentication"
-                        : AppLocalizations.of(context).language,
+                        : AppLocalizations.of(context)!.trans("language"),
             textAlign: TextAlign.center,
           ),
         ),

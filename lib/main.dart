@@ -1,6 +1,7 @@
 
 import 'package:dei/features/products_showcase/bloc/product_cubit.dart';
 import 'package:dei/routes.dart';
+import 'package:dei/universal/localization.dart';
 import 'package:dei/universal/themes/bloc/theme_cubit.dart';
 import 'package:dei/universal/themes/bloc/theme_localization_state.dart';
 import 'package:dei/utilities/size_config.dart';
@@ -22,19 +23,12 @@ import 'package:presentation_displays/secondary_display.dart';
 // ./sync-server --model=objectbox-model.json --unsecured-no-authentication
 /// flutter gen-l10n  commmand for generating applocalization file
 
-void main(List<String> args) async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection(Environment.prod);
-
   runApp(MyApp());
-  MultiWindow.init(args);
 
-  runApp(MyApp());
 }
-
-
-
-
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   final prefs = getIt<SharedPreferences>();
@@ -55,7 +49,7 @@ class MyApp extends StatelessWidget {
             routes: routes,
             locale: state.locale,
             localizationsDelegates: const [
-              AppLocalizations.delegate, // Add this line
+               AppLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,

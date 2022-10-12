@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:config/Config.dart';
 enum AppTheme { dark, light, custom }
 
 enum LocalEnum { en, hi }

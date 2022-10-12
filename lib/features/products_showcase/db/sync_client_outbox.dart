@@ -27,6 +27,14 @@ import 'package:objectbox/objectbox.dart';
 
 ///flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
 //rm -rf data.mdb lock.mdb
+/*For empty directories, use rmdir [dirname] or rm -d [dirname]
+For non-empty directories, use rm -r [dirname]*/
+/*Run any one of the following command on Linux to see open ports:
+sudo lsof -i -P -n | grep LISTEN
+sudo netstat -tulpn | grep LISTEN
+sudo ss -tulpn | grep LISTEN
+sudo lsof -i:22 ## see a specific port such as 22 ##
+sudo nmap -sTU -O IP-address-Here*/
 /*docker run --rm -it \
 --volume $(pwd):/data \
 --publish 127.0.0.1:9999:9999 \
@@ -37,6 +45,10 @@ objectboxio/sync:21.5.14-server \
 --unsecured-no-authentication \
 --browser-bind 0.0.0.0:9980*/
 // ssh -i /Users/born/Desktop/privatekey.pem  savil@35.154.207.75
+//sudo netstat -tupln
+
+ //   ./sync-server --model=objectbox-model.json --unsecured-no-authentication --debug
+//https://www.guru99.com/the-vi-editor.html
 class ObjectBoxSyncClient {
   Store? _store;
   Store? _storeCLoud;
@@ -47,7 +59,7 @@ class ObjectBoxSyncClient {
 
   ObjectBoxSyncClient() {
     getApplicationDocumentsDirectory().then((dir) {
-      openStore(
+ /*     openStore(
         directory: join(dir.path, 'objectbox_cloud'),
       ).then((Store store) {
         _storeCLoud = store;
@@ -58,11 +70,13 @@ class ObjectBoxSyncClient {
         ).start();
 
         productBoxCLoud = store.box<Items>();
-       /* stream = productBoxCLoud!
+
+      *//* stream = productBoxCLoud!
             .query()
             .watch(triggerImmediately: true)
-            .map((event) => event.find());*/
-      });
+            .map((event) => event.find());*//*
+
+      });*/
 
       openStore(
         directory: join(dir.path, 'objectbox'),
@@ -85,21 +99,26 @@ class ObjectBoxSyncClient {
 
   Future<int> update(Items item) async {
 
-    productBoxCLoud!.put(item);
+  //  productBoxCLoud!.put(item);
     return productBox!.put(item);
   }
 
   Future<List<int>> insert(List<Items> products) async {
 
 
-    productBox!.putMany(products);
+   // productBox!.putMany(products);
 
-    return productBoxCLoud!.putMany(products);
+    return productBox!.putMany(products);
   }
 
-  Future<bool> delete(int id) async {
-    productBoxCLoud!.remove(id);
-    return productBox!.remove(id);
+  Future<bool> delete(String sku) async {
+    Query<Items> query=productBox!.query(Items_.sku.equals(sku)).build();
+
+    Items ?items=query.findFirst();
+    if(items!=null) {
+      return productBox!.remove(items.id!);
+    }
+    return false;
   }
 
   Future<List<Items>?> queryAll() async {

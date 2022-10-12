@@ -74,6 +74,18 @@ class ProductCubit extends Cubit<MainState> implements UseCase {
 */
 
     print('${item.id} item id to delete');
-    await outBoxHelper.delete(item.id ?? 0);
+    await outBoxHelper.delete(item.sku??"");
   }
 }
+
+
+/*
+
+{
+"dbDirectory": "objectbox",
+"dbMaxSize": "10G",
+"modelFile": "objectbox-model.json",
+"bind": "ws://0.0.0.0:9999",
+"browserBind": "http://35.154.207.75:9980",
+"browserThreads": 4
+}*/

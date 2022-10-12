@@ -60,7 +60,8 @@ dependencies:
   cached_network_image: ^3.0.0-nullsafety
 
   path_provider: ^2.0.1
-
+  config:
+    path: config
   clean_framework:
     path: framework/clean_framework
   dual_screen: ^1.0.3
@@ -86,6 +87,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/lan/
+
   generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
