@@ -17,7 +17,7 @@ class AppLocalizations {
 late  Map<String, String> _sentences;
 
   Future<bool> load() async {
-    String data = await rootBundle.loadString('assets/lan/${locale.languageCode}.json');
+    String data = await rootBundle.loadString('lib/assets/lan/${locale.languageCode}.json');
     Map<String, dynamic> result = json.decode(data);
     _sentences = {};
     result.forEach((String key, dynamic value) {

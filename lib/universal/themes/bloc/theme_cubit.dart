@@ -21,8 +21,8 @@ class ThemeCubit extends Cubit<ThemeAndLocalizationState> {
             themeData: appThemeData[prefs.containsKey(themeCode)
                 ? EnumToString.fromString(
                         AppTheme.values, prefs.getString(themeCode)!) ??
-                    AppTheme.light
-                : AppTheme.light]!));
+                    AppTheme.custom
+                : AppTheme.custom]!));
 
   setNewTheme({required ThemeData themeData, required Locale locale}) {
     emit(ThemeAndLocalizationState(themeData: themeData, locale: locale));

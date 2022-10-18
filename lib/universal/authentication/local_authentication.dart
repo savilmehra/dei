@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,6 +26,10 @@ class AuthenticationService {
             isSupported? authenticate(): isAuthenticated(false);
           },
     );
+    final List<BiometricType> availableBiometrics =
+    await auth.getAvailableBiometrics();
+
+
   }
   Future<void> authenticate() async {
     bool authenticated = false;
@@ -32,7 +37,7 @@ class AuthenticationService {
       authenticated = await auth.authenticate(
         localizedReason: 'Authenticate yourself with PIN , patteren, password or fingerprint ',
         options: const AuthenticationOptions(
-          stickyAuth: true,
+          sensitiveTransaction: true,
         ),
       );
 

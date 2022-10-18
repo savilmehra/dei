@@ -37,7 +37,7 @@ late BuildContext ctx;
   void initState() {
     super.initState();
     cubit = context.read<ProductCubit>();
-   /* authenticationService = AuthenticationService(isAuthenticated: (isAuth) {
+    authenticationService = AuthenticationService(isAuthenticated: (isAuth) {
       if (!isAuth) {
         showDialog(
             context: context,
@@ -66,7 +66,7 @@ late BuildContext ctx;
                       'Please Authenticate Yourself or Connect to internet '),
                 ));
       }
-    });*/
+    });
   }
 
   @override

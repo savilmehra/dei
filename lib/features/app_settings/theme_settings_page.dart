@@ -5,9 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../locator.dart';
+import '../../universal/localization.dart';
 import '../../universal/themes/app_themes.dart';
 import '../../utilities/string_constatnts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class ThemeSettingsPage extends StatefulWidget {
   static String routeName = '/themeSettingsPage';
@@ -41,7 +42,7 @@ class ThemeSettingsPageState extends State<ThemeSettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).themeSettingsTitle),
+        title: Text(AppLocalizations.of(context)!.trans("themeSettingsTitle")),
       ),
       body: Center(
         child: Padding(
@@ -63,7 +64,7 @@ class ThemeSettingsPageState extends State<ThemeSettingsPage> {
               Card(
                 child: ListTile(
                   subtitle: Text("click swsitch button"),
-                  title: Text(AppLocalizations.of(context).darkTheme),
+                  title: Text(AppLocalizations.of(context)!.trans("darkTheme")),
                   leading: Switch(
                     onChanged: (bool value) {
                       setState(() {
@@ -82,7 +83,7 @@ class ThemeSettingsPageState extends State<ThemeSettingsPage> {
               ),
               Card(
                 child: ListTile(
-                  title: Text(AppLocalizations.of(context).customTheme),
+                  title: Text(AppLocalizations.of(context)!.trans("customTheme")),
                   leading: Switch(
                     onChanged: (bool value) {
                       setState(() {

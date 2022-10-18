@@ -8,6 +8,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'features/products_showcase/db/out_box_helper.dart';
 import 'features/products_showcase/db/sync_client_outbox.dart';
 import 'locator.config.dart';
+const emailKey="EmailKey";
+const passwordKey="PasswordKey";
+const defaultDuration = Duration(milliseconds: 250);
 
 final getIt = GetIt.instance;
 @module

@@ -13,7 +13,6 @@ import 'package:multi_window/multi_window.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/login/ui/splash_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'locator.dart';
 import 'package:presentation_displays/display.dart';
@@ -48,6 +47,7 @@ class MyApp extends StatelessWidget {
             initialRoute: SplashScreen.routeName,
             routes: routes,
             locale: state.locale,
+
             localizationsDelegates: const [
                AppLocalizationsDelegate(),
               GlobalMaterialLocalizations.delegate,

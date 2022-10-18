@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:config/Config.dart';
+
 enum AppTheme { dark, light, custom }
 
 enum LocalEnum { en, hi }
@@ -21,10 +22,13 @@ final appThemeData = {
       textTheme: testTheme),
   AppTheme.custom: ThemeData(
       brightness: Brightness.light,
-      primaryColor: Colors.greenAccent,
-      primarySwatch: Colors.orange,
+      primaryColor: mainColor,
+
+      scaffoldBackgroundColor: backgroundColor,
+      primarySwatch: primaryColor,
       textTheme: testTheme),
 };
+
 TextTheme testTheme = const TextTheme(
   headline1: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
   headline6: TextStyle(fontSize: 24.0, fontStyle: FontStyle.normal),

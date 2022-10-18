@@ -8,9 +8,11 @@ import 'package:flutter/cupertino.dart';
 
 import 'features/app_settings/language_setting_page.dart';
 import 'features/home/ui/home_page.dart';
+import 'features/login/ui/login_page.dart';
 import 'features/login/ui/splash_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
+  LofinPage.routeName: (context) => LofinPage(),
   HomePage.routeName: (context) => HomePage(),
   LanguageSettingPage.routeName:(context) => LanguageSettingPage(),
   WebViewPage.routeName: (context) => WebViewPage(),
