@@ -13,7 +13,7 @@ import 'package:multi_window/multi_window.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/login/ui/splash_screen.dart';
-
+import 'package:path/path.dart' as p;
 import 'locator.dart';
 import 'package:presentation_displays/display.dart';
 import 'package:presentation_displays/displays_manager.dart';

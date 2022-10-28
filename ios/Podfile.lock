@@ -5,6 +5,8 @@ PODS:
     - Flutter
     - ReachabilitySwift
   - Flutter (1.0.0)
+  - flutter_isolate (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -33,6 +35,7 @@ DEPENDENCIES:
   - app_group_directory (from `.symlinks/plugins/app_group_directory/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - Flutter (from `Flutter`)
+  - flutter_isolate (from `.symlinks/plugins/flutter_isolate/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - local_auth_ios (from `.symlinks/plugins/local_auth_ios/ios`)
   - objectbox_sync_flutter_libs (from `.symlinks/plugins/objectbox_sync_flutter_libs/ios`)
@@ -55,6 +58,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/connectivity_plus/ios"
   Flutter:
     :path: Flutter
+  flutter_isolate:
+    :path: ".symlinks/plugins/flutter_isolate/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
   local_auth_ios:
@@ -76,6 +81,7 @@ SPEC CHECKSUMS:
   app_group_directory: 7bf9f8f9819ead554de29da7c25fb7a680d6a9a0
   connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_isolate: 0edf5081826d071adf21759d1eb10ff5c24503b5
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
   local_auth_ios: 0d333dde7780f669e66f19d2ff6005f3ea84008d

@@ -25,6 +25,7 @@ import 'package:objectbox/objectbox.dart';
 ///   ..limit = 5;
 ///   List<String> emails = query.property(User_.email).find(); just to find list of particular variable
 
+
 ///flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
 //rm -rf data.mdb lock.mdb
 /*For empty directories, use rmdir [dirname] or rm -d [dirname]
@@ -35,13 +36,30 @@ sudo netstat -tulpn | grep LISTEN
 sudo ss -tulpn | grep LISTEN
 sudo lsof -i:22 ## see a specific port such as 22 ##
 sudo nmap -sTU -O IP-address-Here*/
-/*docker run --rm -it \
+/*
+docker run --rm -it \
+    --volume $(pwd):/data   \
+      --publish 127.0.0.1:9991:9991  \
+   --publish 127.0.0.1:9981:9981   \
+     --user $UID\
+
+       objectboxio/sync:sync-server-2022-10-21 \
+       --model ./data/objectbox-model.json \
+         --conf ./data/sync-server-config.json \
+         --unsecured-no-authentication \
+--debug
+
+
+
+docker run --rm -it \
 --volume $(pwd):/data \
---publish 127.0.0.1:9999:9999 \
---publish 127.0.0.1:9980:9980 \
+     --publish 127.0.0.1:9991:9991  \
+   --publish 127.0.0.1:9981:9981   \
 --user $UID \
-objectboxio/sync:21.5.14-server \
+  objectboxio/sync:sync-server-2022-10-21 \
 --model ./data/objectbox-model.json \
+  --conf ./data/sync-server-config.json \
+  --debug \
 --unsecured-no-authentication \
 --browser-bind 0.0.0.0:9980*/
 // ssh -i /Users/born/Desktop/privatekey.pem  savil@35.154.207.75
@@ -59,8 +77,8 @@ class ObjectBoxSyncClient {
 
   ObjectBoxSyncClient() {
     getApplicationDocumentsDirectory().then((dir) {
- /*     openStore(
-        directory: join(dir.path, 'objectbox_cloud'),
+    /*  openStore(
+        directory: join(dir.path, 'objectbox'),
       ).then((Store store) {
         _storeCLoud = store;
         Sync.client(
@@ -68,27 +86,26 @@ class ObjectBoxSyncClient {
           'ws://35.154.207.75:9999',
           SyncCredentials.none(),
         ).start();
+print("open-------------------------new ");
+        productBox = store.box<Items>();
 
-        productBoxCLoud = store.box<Items>();
-
-      *//* stream = productBoxCLoud!
+       stream = productBox!
             .query()
             .watch(triggerImmediately: true)
-            .map((event) => event.find());*//*
+            .map((event) => event.find());
 
-      });*/
-
+      });
+*/
       openStore(
         directory: join(dir.path, 'objectbox'),
       ).then((Store store) {
         _store = store;
         Sync.client(
           store,
-          'ws://$syncServerIp:9999',
+          'ws://35.154.207.75:9999',
           SyncCredentials.none(),
         ).start();
         productBox = store.box<Items>();
-
         stream = productBox!
             .query()
             .watch(triggerImmediately: true)

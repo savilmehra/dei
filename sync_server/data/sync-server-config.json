@@ -1,0 +1,14 @@
+{
+  "dbMaxSize": "100G",
+  "modelFile": "objectbox-model.json",
+  "bind": "ws://0.0.0.0:9991",
+  "adminBind": "http://0.0.0.0:9981",
+  "fixedFollower": true,
+  "unsecuredNoAuthentication": true,
+  "clusterId": "cluster-born",
+  "serversToConnect": [
+    {
+      "uri": "ws://35.154.207.75:9999"
+    }
+  ]
+}

@@ -95,6 +95,7 @@ late BuildContext ctx;
               SizedBox(height: getProportionateScreenHeight(50)),
               GridView.builder(
                 shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3),

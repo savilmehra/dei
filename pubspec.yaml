@@ -42,7 +42,7 @@ dependencies:
   enum_to_string: ^2.0.1
   get_it: ^7.2.0
   injectable: ^1.5.3
-  objectbox: ^1.6.2
+  objectbox: ^1.6.2-dev.2
   graphql_flutter: ^5.1.0
   shimmer: ^2.0.0
   presentation_displays: ^0.2.3
@@ -59,7 +59,7 @@ dependencies:
 
   qr_flutter: ^4.0.0 # workd for ios android windows web
 
-  objectbox_sync_flutter_libs: any
+  objectbox_sync_flutter_libs: ^1.6.2-dev.2
   cached_network_image: ^3.0.0-nullsafety
 
   path_provider: ^2.0.1
@@ -94,7 +94,7 @@ flutter:
     - lib/assets/lan/
     - lib/assets/images/
 
-  generate: true
+ # generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
