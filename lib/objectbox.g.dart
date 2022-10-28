@@ -20,18 +20,18 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 8700672669693708824),
+      id: const IdUid(1, 5892073230645292081),
       name: 'Discount',
-      lastPropertyId: const IdUid(2, 9142093302161982148),
+      lastPropertyId: const IdUid(2, 658993421550283255),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 5454915290087954739),
+            id: const IdUid(1, 5627125198324815019),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(2, 9142093302161982148),
+            id: const IdUid(2, 658993421550283255),
             name: 'id',
             type: 6,
             flags: 1)
@@ -39,33 +39,33 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(2, 621470583563039096),
+      id: const IdUid(2, 4904781810402810316),
       name: 'Image',
-      lastPropertyId: const IdUid(5, 2459228063390793455),
+      lastPropertyId: const IdUid(5, 853954095896433898),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 5124253564074295376),
+            id: const IdUid(1, 2894164835404045890),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 1194742527025036813),
+            id: const IdUid(2, 7598597497140947200),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 5791041552945973871),
+            id: const IdUid(3, 1375703026203626661),
             name: 'url',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 6563325092646305185),
+            id: const IdUid(4, 5884881861925012595),
             name: 'label',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 2459228063390793455),
+            id: const IdUid(5, 853954095896433898),
             name: 'position',
             type: 9,
             flags: 0)
@@ -73,54 +73,54 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(3, 9100984073549709582),
+      id: const IdUid(3, 1580020921393185818),
       name: 'Items',
-      lastPropertyId: const IdUid(9, 846871734994028095),
+      lastPropertyId: const IdUid(9, 4687779763101165346),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 666050920883501230),
+            id: const IdUid(1, 1626687582845570923),
             name: 'id',
             type: 6,
             flags: 129),
         ModelProperty(
-            id: const IdUid(2, 1730286865936938302),
+            id: const IdUid(2, 4583551197273862092),
             name: 'sku',
             type: 9,
             flags: 34848,
-            indexId: const IdUid(1, 1314067807555634528)),
+            indexId: const IdUid(1, 7253736171860853708)),
         ModelProperty(
-            id: const IdUid(3, 3020726946559001356),
+            id: const IdUid(3, 3823303552028245483),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 5110274749749757473),
+            id: const IdUid(4, 7797291385674576754),
             name: 'urlKey',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 4260277939230404728),
+            id: const IdUid(5, 8081184946019807841),
             name: 'stockStatus',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 5383068364916087353),
+            id: const IdUid(6, 7915489836086504643),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 7332150198540159789),
+            id: const IdUid(7, 1210475974650910109),
             name: 'priceTiers',
             type: 30,
             flags: 0),
         ModelProperty(
-            id: const IdUid(8, 5595612805471893628),
+            id: const IdUid(8, 1725071236863069153),
             name: 'priceObject',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(9, 846871734994028095),
+            id: const IdUid(9, 4687779763101165346),
             name: 'dbImage',
             type: 9,
             flags: 0)
@@ -128,18 +128,18 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(4, 4062653345238327760),
+      id: const IdUid(4, 2531795975164050181),
       name: 'MinimumPrice',
-      lastPropertyId: const IdUid(2, 2437693636824481522),
+      lastPropertyId: const IdUid(2, 515379859392768464),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 1736611574450273604),
+            id: const IdUid(1, 3253817693505330129),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 2437693636824481522),
+            id: const IdUid(2, 515379859392768464),
             name: 'sTypename',
             type: 9,
             flags: 0)
@@ -147,18 +147,18 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(5, 8793128988968890565),
+      id: const IdUid(5, 7615219777695247696),
       name: 'PriceRange',
-      lastPropertyId: const IdUid(2, 8847707437363155707),
+      lastPropertyId: const IdUid(2, 5043506590782276130),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 4888504888271629382),
+            id: const IdUid(1, 4842940623955405656),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 8847707437363155707),
+            id: const IdUid(2, 5043506590782276130),
             name: 'sTypename',
             type: 9,
             flags: 0)
@@ -166,23 +166,23 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(6, 2282097715721944604),
+      id: const IdUid(6, 2430519224252143484),
       name: 'Products',
-      lastPropertyId: const IdUid(3, 1999041378516943180),
+      lastPropertyId: const IdUid(3, 3134809412435267661),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 4150855053026412081),
+            id: const IdUid(1, 7650875944518839319),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(2, 6661207666609735390),
+            id: const IdUid(2, 2399566513143615275),
             name: 'totalCount',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 1999041378516943180),
+            id: const IdUid(3, 3134809412435267661),
             name: 'id',
             type: 6,
             flags: 1)
@@ -190,28 +190,28 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[]),
   ModelEntity(
-      id: const IdUid(7, 4029704322686904176),
+      id: const IdUid(7, 5941713448473129045),
       name: 'RegularPrice',
-      lastPropertyId: const IdUid(4, 6326507352898613613),
+      lastPropertyId: const IdUid(4, 7342272541044036243),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 8437949802585155854),
+            id: const IdUid(1, 630350020288354942),
             name: 'sTypename',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(2, 467375325695504336),
+            id: const IdUid(2, 9028240167063402289),
             name: 'value',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 2345527234957882964),
+            id: const IdUid(3, 959591740484989176),
             name: 'currency',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 6326507352898613613),
+            id: const IdUid(4, 7342272541044036243),
             name: 'id',
             type: 6,
             flags: 1)
@@ -240,8 +240,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(7, 4029704322686904176),
-      lastIndexId: const IdUid(1, 1314067807555634528),
+      lastEntityId: const IdUid(7, 5941713448473129045),
+      lastIndexId: const IdUid(1, 7253736171860853708),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],

@@ -106,6 +106,7 @@ print("open-------------------------new ");
           SyncCredentials.none(),
         ).start();
         productBox = store.box<Items>();
+
         stream = productBox!
             .query()
             .watch(triggerImmediately: true)
