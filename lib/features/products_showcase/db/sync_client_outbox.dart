@@ -42,8 +42,7 @@ docker run --rm -it \
       --publish 127.0.0.1:9991:9991  \
    --publish 127.0.0.1:9981:9981   \
      --user $UID\
-
-       objectboxio/sync:sync-server-2022-10-21 \
+ objectboxio/sync:sync-server-2022-10-21 \
        --model ./data/objectbox-model.json \
          --conf ./data/sync-server-config.json \
          --unsecured-no-authentication \
