@@ -1,8 +1,9 @@
 {
   "dbMaxSize": "100G",
   "modelFile": "objectbox-model.json",
-  "bind": "ws://0.0.0.0:9991",
-  "adminBind": "http://0.0.0.0:9981",
+  "bind": "ws://0.0.0.0:9999",
+  "adminBind": "http://0.0.0.0:9980",
+  "browserBind": "http://0.0.0.0:9980",
   "fixedFollower": true,
   "unsecuredNoAuthentication": true,
   "clusterId": "cluster-born",
