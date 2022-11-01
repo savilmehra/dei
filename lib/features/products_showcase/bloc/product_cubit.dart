@@ -72,9 +72,8 @@ class ProductCubit extends Cubit<MainState> implements UseCase {
     /* item.name="Savils watch";
     await  outBoxHelper.update(item);
 */
-
     print('${item.id} item id to delete');
-    await outBoxHelper.delete(item.sku??"");
+    await outBoxHelper.delete(item.id??0);
   }
 }
 

@@ -153,7 +153,7 @@ print("open-------------------------new ");
         _store = store;
         Sync.client(
           store,
-          'ws://$syncServerIp:9999',
+          'ws://35.154.207.75:9999',
           SyncCredentials.none(),
         ).start();
         productBox = store.box<Items>();
@@ -179,14 +179,10 @@ print("open-------------------------new ");
     return productBox!.putMany(products);
   }
 
-  Future<bool> delete(String sku) async {
-    Query<Items> query=productBox!.query(Items_.sku.equals(sku)).build();
+  Future<bool> delete(int sku) async {
 
-    Items ?items=query.findFirst();
-    if(items!=null) {
-      return productBox!.remove(items.id!);
-    }
-    return false;
+      return productBox!.remove(sku);
+
   }
 
   Future<List<Items>?> queryAll() async {
