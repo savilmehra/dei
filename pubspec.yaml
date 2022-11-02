@@ -55,14 +55,19 @@ dependencies:
   flutter_svg: ^1.1.5
   window_manager: ^0.2.7
   webview_windows: ^0.1.9
+  fluttertoast: ^8.0.8
+
+  http: ^0.13.3
+
+  http_parser: ^4.0.0
 
 
 
 
 
   qr_flutter: ^4.0.0 # workd for ios android windows web
-  objectbox: ^1.6.2-dev.2
-  objectbox_sync_flutter_libs: 1.6.2-dev.2
+  objectbox: ^1.6.2
+  objectbox_sync_flutter_libs: 1.6.2
   cached_network_image: ^3.0.0-nullsafety
 
   path_provider: ^2.0.1

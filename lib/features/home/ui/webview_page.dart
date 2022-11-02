@@ -1,10 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_windows/webview_windows.dart';
+
+import '../../../universal/uploadfiles/Files/GlobalUploadFilePkg.dart';
 
 class WebViewPage extends StatefulWidget {
   static String routeName = "/webview";
@@ -22,9 +26,7 @@ class WebViewPage extends StatefulWidget {
   WebViewPageState createState() => WebViewPageState();
 }
 
-
-
-String ci='''<!DOCTYPE html>
+String ci = '''<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -74,14 +76,9 @@ var dd=encodeURIComponent(result);
 
     </script>
   </body>
-</html>     '''  ;
-
-
-
-
+</html>     ''';
 
 final navigatorKey = GlobalKey<NavigatorState>();
-
 
 class WebViewPageState extends State<WebViewPage> {
   final _controller = WebviewController();
@@ -93,9 +90,7 @@ class WebViewPageState extends State<WebViewPage> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) =>  initPlatformState());
-
+    WidgetsBinding.instance.addPostFrameCallback((_) => initPlatformState());
   }
 
   Future<void> initPlatformState() async {
@@ -111,20 +106,35 @@ class WebViewPageState extends State<WebViewPage> {
       _subscriptions.add(_controller.url.listen((url) {
         _textController.text = url;
       }));
-      _controller.webMessage.listen((event)
-
-      {
-        print('receivedddddddddddddddddddddddddddddddddddddddddddd');
-
+      _controller.webMessage.listen((event) async {
         print(event);
+
+    /*    final encodedStr = event;
+        Uint8List bytes = base64.decode(encodedStr.toString());
+        String dir = (await getApplicationDocumentsDirectory()).path;
+        File file = File(
+            "$dir/${DateTime.now().millisecondsSinceEpoch}.png");
+        await file.writeAsBytes(bytes);
+
+
+
+
+        await UploadFile(
+          baseUrl: "https://dei-app-sandbox.filespin.io/api/v1/assets/new/content/original/upload",
+          context: context,
+          networkCallBack: () async {
+            // await pr.hide();
+          },
+          file: file,
+        ).uploadFile().then((value) async {}).catchError((onError) async {
+          print(onError.toString());
+        });*/
       });
       await _controller.setBackgroundColor(Colors.transparent);
       await _controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
-      await _controller.loadUrl(Uri.dataFromString(
-          ci,
-          mimeType: 'text/html',
-          encoding: Encoding.getByName('utf-8')
-      ).toString());
+      await _controller.loadUrl(Uri.dataFromString(ci,
+              mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
+          .toString());
 
       var json = '{"name":"John", "age":30, "car":null}';
       // SENT DATA TO HTML CONTENT
@@ -136,58 +146,55 @@ class WebViewPageState extends State<WebViewPage> {
         showDialog(
             context: context,
             builder: (_) => AlertDialog(
-              title: Text('Error'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Code: ${e.code}'),
-                  Text('Message: ${e.message}'),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Continue'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            ));
+                  title: Text('Error'),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Code: ${e.code}'),
+                      Text('Message: ${e.message}'),
+                    ],
+                  ),
+                  actions: [
+                    TextButton(
+                      child: Text('Continue'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    )
+                  ],
+                ));
       });
     }
   }
 
   Widget compositeView() {
-
-      return
-        _controller.value.isInitialized?Stack(
-          children: [
-            Webview(
-              _controller,
-              permissionRequested: _onPermissionRequested,
-            ),
-            StreamBuilder<LoadingState>(
-                stream: _controller.loadingState,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData &&
-                      snapshot.data == LoadingState.loading) {
-                    return LinearProgressIndicator();
-                  } else {
-                    return SizedBox();
-                  }
-                }),
-          ],
-        ):  LinearProgressIndicator();
-
+    return _controller.value.isInitialized
+        ? Stack(
+            children: [
+              Webview(
+                _controller,
+                permissionRequested: _onPermissionRequested,
+              ),
+              StreamBuilder<LoadingState>(
+                  stream: _controller.loadingState,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData &&
+                        snapshot.data == LoadingState.loading) {
+                      return LinearProgressIndicator();
+                    } else {
+                      return SizedBox();
+                    }
+                  }),
+            ],
+          )
+        : LinearProgressIndicator();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(
-          title: Text('Edit Image')),
+      appBar: AppBar(title: Text('Edit Image')),
       body: Center(
         child: compositeView(),
       ),

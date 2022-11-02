@@ -147,6 +147,7 @@ print("open-------------------------new ");
 
       });
 */
+      print(join(dir.path, 'objectbox'));
       openStore(
         directory: join(dir.path, 'objectbox'),
       ).then((Store store) {
