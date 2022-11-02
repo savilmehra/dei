@@ -38,8 +38,11 @@ class NetworkUtils {
         int byteCount = 0;
 
         var request = http.MultipartRequest('POST', Uri.parse(url));
+
+
+        print("reached---------------------------------------------------multipart");
         request.files.add(await http.MultipartFile.fromPath(
-            'attachment', filePath,
+            'file', filePath,
           ));
 
 

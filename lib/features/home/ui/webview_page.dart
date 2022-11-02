@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_windows/webview_windows.dart';
-
+import 'dart:convert';
 import '../../../universal/uploadfiles/Files/GlobalUploadFilePkg.dart';
+import '../fielSpinResponse.dart';
 
 class WebViewPage extends StatefulWidget {
   static String routeName = "/webview";
@@ -54,7 +55,7 @@ var srcUrl='';
         onResult: (result) => {
 
 var dd=encodeURIComponent(result);
-        var value = {"url":dd};
+        var value = {"url":result};
   window.chrome.webview.postMessage(value);
 
 
@@ -107,28 +108,44 @@ class WebViewPageState extends State<WebViewPage> {
         _textController.text = url;
       }));
       _controller.webMessage.listen((event) async {
-        print(event);
+        final uri = Uri.parse(event['url']);
 
-    /*    final encodedStr = event;
-        Uint8List bytes = base64.decode(encodedStr.toString());
+        final splitted =
+            event['url'].toString().split('data:image/jpeg;base64,');
+
+        Uint8List bytes = base64.decode(splitted[1]);
         String dir = (await getApplicationDocumentsDirectory()).path;
-        File file = File(
-            "$dir/${DateTime.now().millisecondsSinceEpoch}.png");
+        File file = File("$dir/${DateTime.now().millisecondsSinceEpoch}.jpeg");
         await file.writeAsBytes(bytes);
 
+        print(file.absolute);
+
+        var request = http.MultipartRequest(
+            'POST',
+            Uri.parse(
+                'https://dei-app-sandbox.filespin.io/api/v1/assets/new/content/original/upload'));
+
+
+        request.headers
+            .addAll({"X-FileSpin-Api-Key": "852c3af777b3481eb6b22a0e99d15c6c"});
 
 
 
-        await UploadFile(
-          baseUrl: "https://dei-app-sandbox.filespin.io/api/v1/assets/new/content/original/upload",
-          context: context,
-          networkCallBack: () async {
-            // await pr.hide();
-          },
-          file: file,
-        ).uploadFile().then((value) async {}).catchError((onError) async {
-          print(onError.toString());
-        });*/
+        request.files
+            .add(await http.MultipartFile.fromPath("file=@", file.path));
+
+
+        var response = await request.send();
+
+        var responsed = await http.Response.fromStream(response);
+        final fileSpinData =
+            FileSpinResponse.fromJson(jsonDecode(responsed.body));
+print(jsonDecode(responsed.body));
+        if (fileSpinData != null && fileSpinData.success) {
+          print("SUCCESS");
+        } else {
+          print("ERROR");
+        }
       });
       await _controller.setBackgroundColor(Colors.transparent);
       await _controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
