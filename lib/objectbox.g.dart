@@ -14,207 +14,53 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_sync_flutter_libs/objectbox_sync_flutter_libs.dart';
 
-import 'features/products_showcase/model/products_response.dart';
+import 'features/home/fielSpinResponse.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 5892073230645292081),
-      name: 'Discount',
-      lastPropertyId: const IdUid(2, 658993421550283255),
+      id: const IdUid(1, 3464243868509585911),
+      name: 'FileSpinFiles',
+      lastPropertyId: const IdUid(7, 2394038595061322414),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 5627125198324815019),
-            name: 'sTypename',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(2, 658993421550283255),
-            name: 'id',
-            type: 6,
-            flags: 1)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(2, 4904781810402810316),
-      name: 'Image',
-      lastPropertyId: const IdUid(5, 853954095896433898),
-      flags: 2,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 2894164835404045890),
-            name: 'id',
+            id: const IdUid(1, 2723055501762845945),
+            name: 'ids',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 7598597497140947200),
-            name: 'sTypename',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 1375703026203626661),
-            name: 'url',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 5884881861925012595),
-            name: 'label',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(5, 853954095896433898),
-            name: 'position',
-            type: 9,
-            flags: 0)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(3, 1580020921393185818),
-      name: 'Items',
-      lastPropertyId: const IdUid(9, 4687779763101165346),
-      flags: 2,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 1626687582845570923),
-            name: 'id',
-            type: 6,
-            flags: 129),
-        ModelProperty(
-            id: const IdUid(2, 4583551197273862092),
-            name: 'sku',
-            type: 9,
-            flags: 34848,
-            indexId: const IdUid(1, 7253736171860853708)),
-        ModelProperty(
-            id: const IdUid(3, 3823303552028245483),
+            id: const IdUid(2, 225836501982460879),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 7797291385674576754),
-            name: 'urlKey',
+            id: const IdUid(3, 5801466558235593996),
+            name: 'size',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 4411547839381681685),
+            name: 'id',
+            type: 9,
+            flags: 34848,
+            indexId: const IdUid(1, 5432422921348563717)),
+        ModelProperty(
+            id: const IdUid(5, 4083266419783766384),
+            name: 'checksum',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 8081184946019807841),
-            name: 'stockStatus',
+            id: const IdUid(6, 968289949259257810),
+            name: 'contentType',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 7915489836086504643),
-            name: 'sTypename',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(7, 1210475974650910109),
-            name: 'priceTiers',
-            type: 30,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(8, 1725071236863069153),
-            name: 'priceObject',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(9, 4687779763101165346),
-            name: 'dbImage',
+            id: const IdUid(7, 2394038595061322414),
+            name: 'thumbnail',
             type: 9,
             flags: 0)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(4, 2531795975164050181),
-      name: 'MinimumPrice',
-      lastPropertyId: const IdUid(2, 515379859392768464),
-      flags: 2,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 3253817693505330129),
-            name: 'id',
-            type: 6,
-            flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 515379859392768464),
-            name: 'sTypename',
-            type: 9,
-            flags: 0)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(5, 7615219777695247696),
-      name: 'PriceRange',
-      lastPropertyId: const IdUid(2, 5043506590782276130),
-      flags: 2,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 4842940623955405656),
-            name: 'id',
-            type: 6,
-            flags: 1),
-        ModelProperty(
-            id: const IdUid(2, 5043506590782276130),
-            name: 'sTypename',
-            type: 9,
-            flags: 0)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(6, 2430519224252143484),
-      name: 'Products',
-      lastPropertyId: const IdUid(3, 3134809412435267661),
-      flags: 2,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 7650875944518839319),
-            name: 'sTypename',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(2, 2399566513143615275),
-            name: 'totalCount',
-            type: 6,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 3134809412435267661),
-            name: 'id',
-            type: 6,
-            flags: 1)
-      ],
-      relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[]),
-  ModelEntity(
-      id: const IdUid(7, 5941713448473129045),
-      name: 'RegularPrice',
-      lastPropertyId: const IdUid(4, 7342272541044036243),
-      flags: 2,
-      properties: <ModelProperty>[
-        ModelProperty(
-            id: const IdUid(1, 630350020288354942),
-            name: 'sTypename',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(2, 9028240167063402289),
-            name: 'value',
-            type: 6,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 959591740484989176),
-            name: 'currency',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 7342272541044036243),
-            name: 'id',
-            type: 6,
-            flags: 1)
       ],
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[])
@@ -240,8 +86,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(7, 5941713448473129045),
-      lastIndexId: const IdUid(1, 7253736171860853708),
+      lastEntityId: const IdUid(1, 3464243868509585911),
+      lastIndexId: const IdUid(1, 5432422921348563717),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
@@ -253,281 +99,58 @@ ModelDefinition getObjectBoxModel() {
       version: 1);
 
   final bindings = <Type, EntityDefinition>{
-    Discount: EntityDefinition<Discount>(
+    FileSpinFiles: EntityDefinition<FileSpinFiles>(
         model: _entities[0],
-        toOneRelations: (Discount object) => [],
-        toManyRelations: (Discount object) => {},
-        getId: (Discount object) => object.id,
-        setId: (Discount object, int id) {
-          object.id = id;
+        toOneRelations: (FileSpinFiles object) => [],
+        toManyRelations: (FileSpinFiles object) => {},
+        getId: (FileSpinFiles object) => object.ids,
+        setId: (FileSpinFiles object, int id) {
+          object.ids = id;
         },
-        objectToFB: (Discount object, fb.Builder fbb) {
-          final sTypenameOffset = object.sTypename == null
-              ? null
-              : fbb.writeString(object.sTypename!);
-          fbb.startTable(3);
-          fbb.addOffset(0, sTypenameOffset);
-          fbb.addInt64(1, object.id ?? 0);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = Discount(
-              sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 4),
-              id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 6));
-
-          return object;
-        }),
-    Image: EntityDefinition<Image>(
-        model: _entities[1],
-        toOneRelations: (Image object) => [],
-        toManyRelations: (Image object) => {},
-        getId: (Image object) => object.id,
-        setId: (Image object, int id) {
-          object.id = id;
-        },
-        objectToFB: (Image object, fb.Builder fbb) {
-          final sTypenameOffset = object.sTypename == null
-              ? null
-              : fbb.writeString(object.sTypename!);
-          final urlOffset =
-              object.url == null ? null : fbb.writeString(object.url!);
-          final labelOffset =
-              object.label == null ? null : fbb.writeString(object.label!);
-          final positionOffset = object.position == null
-              ? null
-              : fbb.writeString(object.position!);
-          fbb.startTable(6);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, sTypenameOffset);
-          fbb.addOffset(2, urlOffset);
-          fbb.addOffset(3, labelOffset);
-          fbb.addOffset(4, positionOffset);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = Image(
-              sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 6),
-              url: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 8),
-              label: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 10),
-              position: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 12),
-              id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 4));
-
-          return object;
-        }),
-    Items: EntityDefinition<Items>(
-        model: _entities[2],
-        toOneRelations: (Items object) => [],
-        toManyRelations: (Items object) => {},
-        getId: (Items object) => object.id,
-        setId: (Items object, int id) {
-          object.id = id;
-        },
-        objectToFB: (Items object, fb.Builder fbb) {
-          final skuOffset =
-              object.sku == null ? null : fbb.writeString(object.sku!);
+        objectToFB: (FileSpinFiles object, fb.Builder fbb) {
           final nameOffset =
               object.name == null ? null : fbb.writeString(object.name!);
-          final urlKeyOffset =
-              object.urlKey == null ? null : fbb.writeString(object.urlKey!);
-          final stockStatusOffset = object.stockStatus == null
+          final idOffset =
+              object.id == null ? null : fbb.writeString(object.id!);
+          final checksumOffset = object.checksum == null
               ? null
-              : fbb.writeString(object.stockStatus!);
-          final sTypenameOffset = object.sTypename == null
+              : fbb.writeString(object.checksum!);
+          final contentTypeOffset = object.contentType == null
               ? null
-              : fbb.writeString(object.sTypename!);
-          final priceTiersOffset = object.priceTiers == null
+              : fbb.writeString(object.contentType!);
+          final thumbnailOffset = object.thumbnail == null
               ? null
-              : fbb.writeList(object.priceTiers!
-                  .map(fbb.writeString)
-                  .toList(growable: false));
-          final priceObjectOffset = object.priceObject == null
-              ? null
-              : fbb.writeString(object.priceObject!);
-          final dbImageOffset =
-              object.dbImage == null ? null : fbb.writeString(object.dbImage!);
-          fbb.startTable(10);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, skuOffset);
-          fbb.addOffset(2, nameOffset);
-          fbb.addOffset(3, urlKeyOffset);
-          fbb.addOffset(4, stockStatusOffset);
-          fbb.addOffset(5, sTypenameOffset);
-          fbb.addOffset(6, priceTiersOffset);
-          fbb.addOffset(7, priceObjectOffset);
-          fbb.addOffset(8, dbImageOffset);
+              : fbb.writeString(object.thumbnail!);
+          fbb.startTable(8);
+          fbb.addInt64(0, object.ids ?? 0);
+          fbb.addOffset(1, nameOffset);
+          fbb.addInt64(2, object.size);
+          fbb.addOffset(3, idOffset);
+          fbb.addOffset(4, checksumOffset);
+          fbb.addOffset(5, contentTypeOffset);
+          fbb.addOffset(6, thumbnailOffset);
           fbb.finish(fbb.endTable());
-          return object.id ?? 0;
+          return object.ids ?? 0;
         },
         objectFromFB: (Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
 
-          final object = Items(
-              id: const fb.Int64Reader()
+          final object = FileSpinFiles(
+              ids: const fb.Int64Reader()
                   .vTableGetNullable(buffer, rootOffset, 4),
-              sku: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 6),
               name: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 6),
+              size: const fb.Int64Reader()
                   .vTableGetNullable(buffer, rootOffset, 8),
-              urlKey: const fb.StringReader(asciiOptimization: true)
+              id: const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 10),
-              stockStatus: const fb.StringReader(asciiOptimization: true)
+              checksum: const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 12),
-              sTypename: const fb.StringReader(asciiOptimization: true)
+              contentType: const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 14),
-              priceTiers: const fb.ListReader<String>(fb.StringReader(asciiOptimization: true), lazy: false)
-                  .vTableGetNullable(buffer, rootOffset, 16))
-            ..priceObject = const fb.StringReader(asciiOptimization: true)
-                .vTableGetNullable(buffer, rootOffset, 18)
-            ..dbImage = const fb.StringReader(asciiOptimization: true)
-                .vTableGetNullable(buffer, rootOffset, 20);
-
-          return object;
-        }),
-    MinimumPrice: EntityDefinition<MinimumPrice>(
-        model: _entities[3],
-        toOneRelations: (MinimumPrice object) => [],
-        toManyRelations: (MinimumPrice object) => {},
-        getId: (MinimumPrice object) => object.id,
-        setId: (MinimumPrice object, int id) {
-          object.id = id;
-        },
-        objectToFB: (MinimumPrice object, fb.Builder fbb) {
-          final sTypenameOffset = object.sTypename == null
-              ? null
-              : fbb.writeString(object.sTypename!);
-          fbb.startTable(3);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, sTypenameOffset);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = MinimumPrice(
-              sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 6),
-              id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 4));
-
-          return object;
-        }),
-    PriceRange: EntityDefinition<PriceRange>(
-        model: _entities[4],
-        toOneRelations: (PriceRange object) => [],
-        toManyRelations: (PriceRange object) => {},
-        getId: (PriceRange object) => object.id,
-        setId: (PriceRange object, int id) {
-          object.id = id;
-        },
-        objectToFB: (PriceRange object, fb.Builder fbb) {
-          final sTypenameOffset = object.sTypename == null
-              ? null
-              : fbb.writeString(object.sTypename!);
-          fbb.startTable(3);
-          fbb.addInt64(0, object.id ?? 0);
-          fbb.addOffset(1, sTypenameOffset);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = PriceRange(
-              sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 6),
-              id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 4));
-
-          return object;
-        }),
-    Products: EntityDefinition<Products>(
-        model: _entities[5],
-        toOneRelations: (Products object) => [],
-        toManyRelations: (Products object) => {},
-        getId: (Products object) => object.id,
-        setId: (Products object, int id) {
-          object.id = id;
-        },
-        objectToFB: (Products object, fb.Builder fbb) {
-          final sTypenameOffset = object.sTypename == null
-              ? null
-              : fbb.writeString(object.sTypename!);
-          fbb.startTable(4);
-          fbb.addOffset(0, sTypenameOffset);
-          fbb.addInt64(1, object.totalCount);
-          fbb.addInt64(2, object.id ?? 0);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = Products(
-              id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 8),
-              sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 4),
-              totalCount: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 6));
-
-          return object;
-        }),
-    RegularPrice: EntityDefinition<RegularPrice>(
-        model: _entities[6],
-        toOneRelations: (RegularPrice object) => [],
-        toManyRelations: (RegularPrice object) => {},
-        getId: (RegularPrice object) => object.id,
-        setId: (RegularPrice object, int id) {
-          object.id = id;
-        },
-        objectToFB: (RegularPrice object, fb.Builder fbb) {
-          final sTypenameOffset = object.sTypename == null
-              ? null
-              : fbb.writeString(object.sTypename!);
-          final currencyOffset = object.currency == null
-              ? null
-              : fbb.writeString(object.currency!);
-          fbb.startTable(5);
-          fbb.addOffset(0, sTypenameOffset);
-          fbb.addInt64(1, object.value);
-          fbb.addOffset(2, currencyOffset);
-          fbb.addInt64(3, object.id ?? 0);
-          fbb.finish(fbb.endTable());
-          return object.id ?? 0;
-        },
-        objectFromFB: (Store store, ByteData fbData) {
-          final buffer = fb.BufferContext(fbData);
-          final rootOffset = buffer.derefObject(0);
-
-          final object = RegularPrice(
-              sTypename: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 4),
-              value: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 6),
-              currency: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 8),
-              id: const fb.Int64Reader()
-                  .vTableGetNullable(buffer, rootOffset, 10));
+              thumbnail: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 16));
 
           return object;
         })
@@ -536,121 +159,33 @@ ModelDefinition getObjectBoxModel() {
   return ModelDefinition(model, bindings);
 }
 
-/// [Discount] entity fields to define ObjectBox queries.
-class Discount_ {
-  /// see [Discount.sTypename]
-  static final sTypename =
-      QueryStringProperty<Discount>(_entities[0].properties[0]);
+/// [FileSpinFiles] entity fields to define ObjectBox queries.
+class FileSpinFiles_ {
+  /// see [FileSpinFiles.ids]
+  static final ids =
+      QueryIntegerProperty<FileSpinFiles>(_entities[0].properties[0]);
 
-  /// see [Discount.id]
-  static final id = QueryIntegerProperty<Discount>(_entities[0].properties[1]);
-}
+  /// see [FileSpinFiles.name]
+  static final name =
+      QueryStringProperty<FileSpinFiles>(_entities[0].properties[1]);
 
-/// [Image] entity fields to define ObjectBox queries.
-class Image_ {
-  /// see [Image.id]
-  static final id = QueryIntegerProperty<Image>(_entities[1].properties[0]);
+  /// see [FileSpinFiles.size]
+  static final size =
+      QueryIntegerProperty<FileSpinFiles>(_entities[0].properties[2]);
 
-  /// see [Image.sTypename]
-  static final sTypename =
-      QueryStringProperty<Image>(_entities[1].properties[1]);
-
-  /// see [Image.url]
-  static final url = QueryStringProperty<Image>(_entities[1].properties[2]);
-
-  /// see [Image.label]
-  static final label = QueryStringProperty<Image>(_entities[1].properties[3]);
-
-  /// see [Image.position]
-  static final position =
-      QueryStringProperty<Image>(_entities[1].properties[4]);
-}
-
-/// [Items] entity fields to define ObjectBox queries.
-class Items_ {
-  /// see [Items.id]
-  static final id = QueryIntegerProperty<Items>(_entities[2].properties[0]);
-
-  /// see [Items.sku]
-  static final sku = QueryStringProperty<Items>(_entities[2].properties[1]);
-
-  /// see [Items.name]
-  static final name = QueryStringProperty<Items>(_entities[2].properties[2]);
-
-  /// see [Items.urlKey]
-  static final urlKey = QueryStringProperty<Items>(_entities[2].properties[3]);
-
-  /// see [Items.stockStatus]
-  static final stockStatus =
-      QueryStringProperty<Items>(_entities[2].properties[4]);
-
-  /// see [Items.sTypename]
-  static final sTypename =
-      QueryStringProperty<Items>(_entities[2].properties[5]);
-
-  /// see [Items.priceTiers]
-  static final priceTiers =
-      QueryStringVectorProperty<Items>(_entities[2].properties[6]);
-
-  /// see [Items.priceObject]
-  static final priceObject =
-      QueryStringProperty<Items>(_entities[2].properties[7]);
-
-  /// see [Items.dbImage]
-  static final dbImage = QueryStringProperty<Items>(_entities[2].properties[8]);
-}
-
-/// [MinimumPrice] entity fields to define ObjectBox queries.
-class MinimumPrice_ {
-  /// see [MinimumPrice.id]
+  /// see [FileSpinFiles.id]
   static final id =
-      QueryIntegerProperty<MinimumPrice>(_entities[3].properties[0]);
+      QueryStringProperty<FileSpinFiles>(_entities[0].properties[3]);
 
-  /// see [MinimumPrice.sTypename]
-  static final sTypename =
-      QueryStringProperty<MinimumPrice>(_entities[3].properties[1]);
-}
+  /// see [FileSpinFiles.checksum]
+  static final checksum =
+      QueryStringProperty<FileSpinFiles>(_entities[0].properties[4]);
 
-/// [PriceRange] entity fields to define ObjectBox queries.
-class PriceRange_ {
-  /// see [PriceRange.id]
-  static final id =
-      QueryIntegerProperty<PriceRange>(_entities[4].properties[0]);
+  /// see [FileSpinFiles.contentType]
+  static final contentType =
+      QueryStringProperty<FileSpinFiles>(_entities[0].properties[5]);
 
-  /// see [PriceRange.sTypename]
-  static final sTypename =
-      QueryStringProperty<PriceRange>(_entities[4].properties[1]);
-}
-
-/// [Products] entity fields to define ObjectBox queries.
-class Products_ {
-  /// see [Products.sTypename]
-  static final sTypename =
-      QueryStringProperty<Products>(_entities[5].properties[0]);
-
-  /// see [Products.totalCount]
-  static final totalCount =
-      QueryIntegerProperty<Products>(_entities[5].properties[1]);
-
-  /// see [Products.id]
-  static final id = QueryIntegerProperty<Products>(_entities[5].properties[2]);
-}
-
-/// [RegularPrice] entity fields to define ObjectBox queries.
-class RegularPrice_ {
-  /// see [RegularPrice.sTypename]
-  static final sTypename =
-      QueryStringProperty<RegularPrice>(_entities[6].properties[0]);
-
-  /// see [RegularPrice.value]
-  static final value =
-      QueryIntegerProperty<RegularPrice>(_entities[6].properties[1]);
-
-  /// see [RegularPrice.currency]
-  static final currency =
-      QueryStringProperty<RegularPrice>(_entities[6].properties[2]);
-
-  /// see [RegularPrice.id]
-  static final id =
-      QueryIntegerProperty<RegularPrice>(_entities[6].properties[3]);
+  /// see [FileSpinFiles.thumbnail]
+  static final thumbnail =
+      QueryStringProperty<FileSpinFiles>(_entities[0].properties[6]);
 }

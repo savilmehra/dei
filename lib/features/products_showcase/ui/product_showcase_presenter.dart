@@ -1,13 +1,16 @@
+import 'package:dei/features/home/ui/webview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 
 import '../../../universal/graphql/graph_ql_service.dart';
+import '../../home/fielSpinResponse.dart';
 import '../../home/ui/home_page.dart';
 import '../api/product_quries.dart';
 import '../bloc/product_cubit.dart';
 import '../bloc/states.dart';
-import '../model/products_response.dart';
+
 import 'product_showcase_widget.dart';
 
 class ProductShowCasePresenter extends StatefulWidget {
@@ -39,10 +42,18 @@ class ProductShowCasteState extends State<ProductShowCasePresenter> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, MainState>(builder: (context, state) {
       return ProductShowCaseWidget(
-        callBack: (Items item) {
+        callBack: (FileSpinFiles item) {
 
 
-         BlocProvider.of<ProductCubit>(context).deleteItem(item);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) =>  WebViewPage(updateCallBack: (url){
+
+
+            }, url: item.thumbnail??"",)),
+          );
+
+          //BlocProvider.of<ProductCubit>(context).deleteItem(item);
         },
         height: widget.height,
         listType: widget.listType,

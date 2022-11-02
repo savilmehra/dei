@@ -1,8 +1,9 @@
-import 'dart:convert';
+
 
 import 'package:clean_framework/clean_framework.dart';
-import 'package:dei/features/products_showcase/bloc/product_adapter.dart';
+
 import 'package:dei/features/products_showcase/bloc/states.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -10,23 +11,23 @@ import '../../../locator.dart';
 import '../../../universal/graphql/graph_ql_service.dart';
 import '../../../universal/graphql/repository_graphql.dart';
 
+import '../../home/fielSpinResponse.dart';
 import '../db/out_box_helper.dart';
 import '../db/sync_client_outbox.dart';
-import '../model/product_entity.dart';
-import '../model/products_response.dart';
+
 
 class ProductCubit extends Cubit<MainState> implements UseCase {
   late RepositoryScope scope;
   var outBoxHelper = GetIt.instance<ObjectBoxSyncClient>();
 
   ProductCubit() : super(LoadingState()) {
-    scope = ApplicationLocator()
+ /*   scope = ApplicationLocator()
         .repositoryGql
-        .create<ProductEntity>(ProductEntity(), _notifySubscribers);
+        .create<ProductEntity>(ProductEntity(), _notifySubscribers);*/
     listenStream();
   }
 
-  listenStream() {
+  listenStream() async {
 
     if( outBoxHelper.stream!=null) {
       outBoxHelper.stream.listen((entity) async {
@@ -38,6 +39,7 @@ class ProductCubit extends Cubit<MainState> implements UseCase {
         emit(LoadedState(products: entity));
       }
     });
+
     }
   }
 
@@ -47,10 +49,16 @@ class ProductCubit extends Cubit<MainState> implements UseCase {
       required RequestType requestType,
       required String queryString,
       required Function() getData}) async {
-    await ApplicationLocator().repositoryGql.runServiceAdapter(
+
+
+
+
+
+
+ /*   await ApplicationLocator().repositoryGql.runServiceAdapter(
         scope,
         ProductAdapter(token, header,
-            requestType: RequestType.query, queryString: queryString));
+            requestType: RequestType.query, queryString: queryString));*/
   }
 
   Future<void> getLocalData() async {
@@ -61,30 +69,24 @@ class ProductCubit extends Cubit<MainState> implements UseCase {
   }
 
   void _notifySubscribers(entity) {
-    ProductEntity entity = ApplicationLocator().repositoryGql.get(scope);
+   // ProductEntity entity = ApplicationLocator().repositoryGql.get(scope);
 
     if (entity.data.products != null) {
       outBoxHelper.insert(entity.data.products!.items!);
     }
   }
 
-  deleteItem(Items item) async {
-    /* item.name="Savils watch";
+
+  update(FileSpinFiles item) async {
+
     await  outBoxHelper.update(item);
-*/
+
+
+  }
+  deleteItem(FileSpinFiles item) async {
+
     print('${item.id} item id to delete');
-    await outBoxHelper.delete(item.id??0);
+    await outBoxHelper.delete(item.ids??0);
   }
 }
 
-
-/*
-
-{
-"dbDirectory": "objectbox",
-"dbMaxSize": "10G",
-"modelFile": "objectbox-model.json",
-"bind": "ws://0.0.0.0:9999",
-"browserBind": "http://35.154.207.75:9980",
-"browserThreads": 4
-}*/

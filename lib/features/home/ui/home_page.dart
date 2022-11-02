@@ -1,3 +1,4 @@
+import 'package:dei/features/home/fielSpinResponse.dart';
 import 'package:dei/features/home/ui/webview_new.dart';
 import 'package:dei/features/home/ui/webview_page.dart';
 
@@ -17,9 +18,10 @@ import '../../app_settings/theme_settings_page.dart';
 
 import '../../products_showcase/api/product_quries.dart';
 import '../../products_showcase/bloc/product_cubit.dart';
-import '../../products_showcase/model/products_response.dart';
+
 import '../../products_showcase/ui/product_showcase_presenter.dart';
 import '../../products_showcase/ui/product_showcase_widget.dart';
+import 'image_gallery.dart';
 
 class HomePage extends StatefulWidget {
   static String routeName = '/home';
@@ -130,7 +132,7 @@ late BuildContext ctx;
             : index == 1
                 ? Navigator.pushNamed(
                     context,
-          WebViewPage.routeName,
+          GalleryImages.routeName,
                   )
                 : Navigator.pushNamed(
                     context,
@@ -155,7 +157,7 @@ late BuildContext ctx;
     );
   }
 
-  Widget getListItem(Items data) {
+  Widget getListItem(FileSpinFiles data) {
     return Padding(
       padding: EdgeInsets.all(getProportionateScreenWidth(4)),
       child: ProductCard(product: data),

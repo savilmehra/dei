@@ -16,7 +16,7 @@
       "checksum": "9d06be738f2d390arrb46cb9004e115fd8",
       "content_type": "image/jpeg",
       "thumbnail":
-     "https://i.imgur.com/OB0y6MR.jp"
+     "https://picsum.photos/seed/picsum/200/300"
 
     },
     {
@@ -26,7 +26,7 @@
       "checksum": "9d06be738f2d390ab46cb9004e115fd8",
       "content_type": "image/jpeg",
       "thumbnail":
-     "https://farm2.staticflickr.com/1533/26541536141_41abe98db3_z_d.jpg"
+     "https://picsum.photos/200/300"
 
 
 
@@ -79,7 +79,7 @@
       "checksum": "9d06be738f2d390ab46cb9004e115fd8",
       "content_type": "image/jpeg",
       "thumbnail":
-      "https://farm6.staticflickr.com/5590/14821526429_5c6ea60405_z_d.jpg"
+      "https://picsum.photos/200/300?grayscale"
 
     },
     {

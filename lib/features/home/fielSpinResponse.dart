@@ -1,5 +1,9 @@
-class FileSpinResponse {
-  List<Files>? files;
+
+import 'package:clean_framework/clean_framework_defaults.dart';
+import 'package:objectbox/objectbox.dart';
+
+class FileSpinResponse extends JsonResponseModel {
+  List<FileSpinFiles>? files;
   bool success=false;
   String? provider;
 
@@ -7,9 +11,9 @@ class FileSpinResponse {
 
   FileSpinResponse.fromJson(Map<String, dynamic> json) {
     if (json['files'] != null) {
-      files = <Files>[];
+      files = <FileSpinFiles>[];
       json['files'].forEach((v) {
-        files!.add(new Files.fromJson(v));
+        files!.add(new FileSpinFiles.fromJson(v));
       });
     }
     success = json['success'];
@@ -25,25 +29,38 @@ class FileSpinResponse {
     data['provider'] = this.provider;
     return data;
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [files,success,provider];
 }
 
-class Files {
+
+@Entity()
+@Sync()
+class FileSpinFiles extends Entity {
+  @Id()
+  int? ids;
   String? name;
   int? size;
+  @Unique(onConflict: ConflictStrategy.replace)
   String? id;
   String? checksum;
   String? contentType;
   String? thumbnail;
 
-  Files(
-      {this.name,
+  FileSpinFiles(
+      {
+
+        this.ids=0,
+        this.name,
         this.size,
         this.id,
         this.checksum,
         this.contentType,
         this.thumbnail});
 
-  Files.fromJson(Map<String, dynamic> json) {
+  FileSpinFiles.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     size = json['size'];
     id = json['id'];
@@ -62,4 +79,6 @@ class Files {
     data['thumbnail'] = this.thumbnail;
     return data;
   }
+
+
 }

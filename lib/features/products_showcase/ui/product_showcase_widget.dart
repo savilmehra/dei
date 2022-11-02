@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 
 import '../../../components/horizontal_product_loader.dart';
 import '../../../utilities/size_config.dart';
+import '../../home/fielSpinResponse.dart';
 import '../../home/ui/webview_page.dart';
 import '../bloc/product_cubit.dart';
 import '../bloc/states.dart';
-import '../model/products_response.dart';
+
 
 enum ListType { grid, vertical, horizontal }
 
-typedef ListItem = Widget Function(Items itemData);
+typedef ListItem = Widget Function(FileSpinFiles itemData);
 
 class ProductShowCaseWidget extends StatelessWidget {
 
@@ -21,7 +22,7 @@ class ProductShowCaseWidget extends StatelessWidget {
   final ListType listType;
   final ListItem listItem;
   final String? title;
-  final Function(Items) callBack;
+  final Function(FileSpinFiles) callBack;
 
   ProductShowCaseWidget(
       {required this.state,
@@ -71,7 +72,7 @@ class ProductShowCaseWidget extends StatelessWidget {
   }
 
   Widget getVerticalList(ListType listType, MainState state) {
-    List<Items> list = (state as LoadedState).products;
+    List<FileSpinFiles> list = (state as LoadedState).products;
     return ListView.builder(
         itemCount: list.length,
         shrinkWrap: true,
@@ -87,10 +88,40 @@ class ProductShowCaseWidget extends StatelessWidget {
   }
 
   Widget gridViewList(MainState state) {
-    List<Items> list = (state as LoadedState).products;
+    List<FileSpinFiles> list = (state as LoadedState).products;
     return Padding(
       padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-      child: GridView.builder(
+      child:
+      LayoutBuilder(builder: (context, constraints) {
+        return   GridView.count(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: constraints.maxWidth > 700 ? 4 : 2,
+          mainAxisSpacing: 3.0,
+          crossAxisSpacing: 3.0,
+          childAspectRatio: 0.75,
+          //physics:BouncingScrollPhysics(),
+          padding: EdgeInsets.all(10.0),
+          children: list
+              .map(
+                (data) =>  InkWell(
+                onTap: () async {
+                  callBack(data);
+                },
+                child: listItem(data)),
+          )
+              .toList(),
+        );
+      }
+      )
+
+
+
+
+
+
+
+   /*   GridView.builder(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           itemCount: list.length,
@@ -106,7 +137,7 @@ class ProductShowCaseWidget extends StatelessWidget {
                   callBack(item);
                 },
                 child: listItem(item));
-          }),
+          }),*/
     );
   }
 

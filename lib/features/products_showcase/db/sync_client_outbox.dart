@@ -6,7 +6,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../objectbox.g.dart';
-import '../model/products_response.dart';
+import '../../home/fielSpinResponse.dart';
+
 import 'package:objectbox/objectbox.dart';
 
 /// return all entities matching the query
@@ -115,16 +116,16 @@ docker run --rm -it \
 --browser-bind 0.0.0.0:9980*/
 // ssh -i /Users/born/Desktop/privatekey.pem  savil@35.154.207.75
 //sudo netstat -tupln
-
+//flutter pub get && flutter pub run build_runner build --delete-conflicting-outputs
  //   ./sync-server --model=objectbox-model.json  --conf sync-server-config.json --unsecured-no-authentication --debug
 //https://www.guru99.com/the-vi-editor.html
 class ObjectBoxSyncClient {
   Store? _store;
   Store? _storeCLoud;
-  Box<Items>? productBox;
-  Box<Items>? productBoxCLoud;
+  Box<FileSpinFiles>? productBox;
+  Box<FileSpinFiles>? productBoxCLoud;
   final syncServerIp = Platform.isAndroid ? '10.0.2.2' : '127.0.0.1';
-  late Stream<List<Items>?> stream;
+  late Stream<List<FileSpinFiles>?> stream;
 
   ObjectBoxSyncClient() {
     getApplicationDocumentsDirectory().then((dir) {
@@ -138,7 +139,7 @@ class ObjectBoxSyncClient {
           SyncCredentials.none(),
         ).start();
 print("open-------------------------new ");
-        productBox = store.box<Items>();
+        productBox = store.box<FileSpinFiles>();
 
        stream = productBox!
             .query()
@@ -157,7 +158,7 @@ print("open-------------------------new ");
           'ws://$syncServerIp:9999',
           SyncCredentials.none(),
         ).start();
-        productBox = store.box<Items>();
+        productBox = store.box<FileSpinFiles>();
         stream = productBox!
             .query()
             .watch(triggerImmediately: true)
@@ -166,13 +167,13 @@ print("open-------------------------new ");
     });
   }
 
-  Future<int> update(Items item) async {
+  Future<int> update(FileSpinFiles item) async {
 
   //  productBoxCLoud!.put(item);
     return productBox!.put(item);
   }
 
-  Future<List<int>> insert(List<Items> products) async {
+  Future<List<int>> insert(List<FileSpinFiles> products) async {
 
 
    // productBox!.putMany(products);
@@ -186,7 +187,7 @@ print("open-------------------------new ");
 
   }
 
-  Future<List<Items>?> queryAll() async {
+  Future<List<FileSpinFiles>?> queryAll() async {
     return productBox!.getAll();
   }
 

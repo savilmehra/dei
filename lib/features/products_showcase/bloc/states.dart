@@ -1,12 +1,12 @@
-import '../model/product_entity.dart';
-import '../model/products_response.dart';
+import '../../home/fielSpinResponse.dart';
+
 
 abstract class MainState {}
 
 class LoadingState extends MainState {}
 
 class LoadedState extends MainState {
-  final List<Items> products;
+  final List<FileSpinFiles> products;
   LoadedState({required this.products});
 }
 

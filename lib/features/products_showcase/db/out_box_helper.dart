@@ -6,8 +6,10 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../objectbox.g.dart';
-import '../model/products_response.dart';
+
 import 'package:objectbox/objectbox.dart';
+
+import '../../home/fielSpinResponse.dart';
 
 /// return all entities matching the query
 /// query.find();
@@ -29,8 +31,8 @@ import 'package:objectbox/objectbox.dart';
 
 class OutBoxHelper {
   Store? _store;
-  Box<Items>? productBoxCLoud;
-  late Stream<List<Items>?> stream;
+  Box<FileSpinFiles>? productBoxCLoud;
+  late Stream<List<FileSpinFiles>?> stream;
 
   OutBoxHelper() {
  /*   getApplicationDocumentsDirectory().then((dir) {
@@ -44,7 +46,7 @@ class OutBoxHelper {
           SyncCredentials.none(),
         ).start();
 
-        productBoxCLoud = store.box<Items>();
+        productBoxCLoud = store.box<FileSpinFiles>();
         productBoxCLoud!.removeAll();
          stream = productBoxCLoud!
             .query()
@@ -54,13 +56,13 @@ class OutBoxHelper {
     });*/
   }
 
-  Future<int> update(Items item) async {
+  Future<int> update(FileSpinFiles item) async {
 
 return    productBoxCLoud!.put(item);
 
   }
 
-  Future<List<int>> insert(List<Items> products) async {
+  Future<List<int>> insert(List<FileSpinFiles> products) async {
 
     return productBoxCLoud!.putMany(products);
   }
@@ -70,7 +72,7 @@ return    productBoxCLoud!.put(item);
 
   }
 
-  Future<List<Items>?> queryAll() async {
+  Future<List<FileSpinFiles>?> queryAll() async {
     return productBoxCLoud!.getAll();
   }
 

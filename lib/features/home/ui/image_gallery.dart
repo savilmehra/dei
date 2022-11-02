@@ -1,118 +1,129 @@
-var data=''' 
-{
-  "files": [
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69defe3d194dfvv38a88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-      "https://i.imgur.com/CzXTtJV.jpg"
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d19brbrbvvv4rrdf38a88d6db51d8ade3",
-      "checksum": "9d06be738f2d390arrb46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-     "https://i.imgur.com/OB0y6MR.jp"
+import 'dart:convert';
 
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3dvv194df3rrrgwrr8a88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-     "https://farm2.staticflickr.com/1533/26541536141_41abe98db3_z_d.jpg"
+import 'package:dei/features/home/fielSpinResponse.dart';
+import 'package:dei/features/home/ui/webview_new.dart';
+import 'package:dei/features/home/ui/webview_page.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../components/product_card.dart';
+import '../../../universal/authentication/local_authentication.dart';
+import '../../../universal/graphql/graph_ql_service.dart';
+import '../../../universal/localization.dart';
+import '../../../utilities/size_config.dart';
+import '../../app_settings/language_setting_page.dart';
+import '../../app_settings/theme_settings_page.dart';
 
 
+import '../../products_showcase/api/product_quries.dart';
+import '../../products_showcase/bloc/product_cubit.dart';
 
+import '../../products_showcase/db/sync_client_outbox.dart';
+import '../../products_showcase/ui/product_showcase_presenter.dart';
+import '../../products_showcase/ui/product_showcase_widget.dart';
 
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d194vvrrrvdf38a88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-      "https://farm4.staticflickr.com/3075/3168662394_7d7103de7d_z_d.jpg"
+class GalleryImages extends StatefulWidget {
+  static String routeName = '/GalleryImages';
 
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d194df38avvvv88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-   "https://farm9.staticflickr.com/8505/8441256181_4e98d8bff5_z_d.jpg" },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d194df3vsdva88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-      "https://i.imgur.com/OnwEDW3.jpg"
-
-
-
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d194df38aevev8d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-     "https://farm3.staticflickr.com/2220/1572613671_7311098b76_z_d.jpg"
-
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d194df3wfwg8a88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-      "https://farm6.staticflickr.com/5590/14821526429_5c6ea60405_z_d.jpg"
-
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3aegfaedavgeg194df38a88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-     "https://farm7.staticflickr.com/6089/6115759179_86316c08ff_z_d.jpg"
-
-
-    },
-    {
-      "name": "1667396663189.jpeg",
-      "size": 46646,
-      "id": "6f8cc69d3d19aveaaefggaawv4df38efegegg88d6db51d8ade3",
-      "checksum": "9d06be738f2d390ab46cb9004e115fd8",
-      "content_type": "image/jpeg",
-      "thumbnail":
-     "https://farm2.staticflickr.com/1090/4595137268_0e3f2b9aa7_z_d.jpg"
-      
-
-
-
-
-    }
-
-  ],
-  "success": true,
-  "provider": "local"
+  @override
+  ThemeSettingsPageState createState() => ThemeSettingsPageState();
 }
 
+class ThemeSettingsPageState extends State<GalleryImages> {
+  final ImagePicker _picker = ImagePicker();
+  late ProductCubit cubit;
+  var outBoxHelper = GetIt.instance<ObjectBoxSyncClient>();
+  late AuthenticationService authenticationService;
+  late BuildContext ctx;
+  @override
+  void initState() {
+    super.initState();
+    cubit = context.read<ProductCubit>();
+    authenticationService = AuthenticationService(isAuthenticated: (isAuth) {
+      if (!isAuth) {
+        showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
 
-  ''';
+              actions: [
+                TextButton(
+                  onPressed: () {
+
+                    SystemNavigator.pop();
+                  },
+                  child: const Text("Cancel"),)
+                ,
+                TextButton(
+                  onPressed: () {
+                    authenticationService.checkSupport();
+                    Navigator.pop(context);
+                  }, child: Text("Unlock"),
+                )
+              ],
+              title: const Text(
+                'Authentication Failed',
+                style: TextStyle(color: Colors.blue,fontSize: 18),
+              ),
+              content: const Text(
+                  'Please Authenticate Yourself or Connect to internet '),
+            ));
+      }
+    });
+
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) =>   addData());
+  }
+
+
+  addData()
+  async {
+
+    String data = await DefaultAssetBundle.of(context).loadString("lib/assets/data.json");
+    final jsonResult = FileSpinResponse.fromJson(jsonDecode(data));
+    outBoxHelper.insert(jsonResult.files??[]);
+  }
+
+
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text( "Images Gallery"),
+
+        ),
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverList(
+                delegate: SliverChildListDelegate([
+                  SizedBox(height: getProportionateScreenHeight(50)),
+
+                  BlocProvider(
+                    create: (_) => cubit,
+                    child: ProductShowCasePresenter(
+                      listType: ListType.grid,
+                      title:"Click To Edit on any image",
+                      listItem: getListItem,
+                    ),
+                  ),
+                  SizedBox(height: getProportionateScreenWidth(30)),
+                ]))
+          ],
+        ));
+  }
+
+
+
+  Widget getListItem(FileSpinFiles data) {
+    return Padding(
+      padding: EdgeInsets.all(getProportionateScreenWidth(4)),
+      child: ProductCard(product: data),
+    );
+  }
+}

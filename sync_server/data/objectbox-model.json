@@ -4,215 +4,53 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:5892073230645292081",
-      "lastPropertyId": "2:658993421550283255",
-      "name": "Discount",
+      "id": "1:760989515856431261",
+      "lastPropertyId": "7:849529179275091260",
+      "name": "FileSpinFiles",
       "flags": 2,
       "properties": [
         {
-          "id": "1:5627125198324815019",
-          "name": "sTypename",
-          "type": 9
-        },
-        {
-          "id": "2:658993421550283255",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "2:4904781810402810316",
-      "lastPropertyId": "5:853954095896433898",
-      "name": "Image",
-      "flags": 2,
-      "properties": [
-        {
-          "id": "1:2894164835404045890",
-          "name": "id",
+          "id": "1:6830915192630785858",
+          "name": "ids",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:7598597497140947200",
-          "name": "sTypename",
-          "type": 9
-        },
-        {
-          "id": "3:1375703026203626661",
-          "name": "url",
-          "type": 9
-        },
-        {
-          "id": "4:5884881861925012595",
-          "name": "label",
-          "type": 9
-        },
-        {
-          "id": "5:853954095896433898",
-          "name": "position",
-          "type": 9
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "3:1580020921393185818",
-      "lastPropertyId": "9:4687779763101165346",
-      "name": "Items",
-      "flags": 2,
-      "properties": [
-        {
-          "id": "1:1626687582845570923",
-          "name": "id",
-          "type": 6,
-          "flags": 129
-        },
-        {
-          "id": "2:4583551197273862092",
-          "name": "sku",
-          "type": 9,
-          "flags": 34848,
-          "indexId": "1:7253736171860853708"
-        },
-        {
-          "id": "3:3823303552028245483",
+          "id": "2:8503637155375841210",
           "name": "name",
           "type": 9
         },
         {
-          "id": "4:7797291385674576754",
-          "name": "urlKey",
-          "type": 9
-        },
-        {
-          "id": "5:8081184946019807841",
-          "name": "stockStatus",
-          "type": 9
-        },
-        {
-          "id": "6:7915489836086504643",
-          "name": "sTypename",
-          "type": 9
-        },
-        {
-          "id": "7:1210475974650910109",
-          "name": "priceTiers",
-          "type": 30
-        },
-        {
-          "id": "8:1725071236863069153",
-          "name": "priceObject",
-          "type": 9
-        },
-        {
-          "id": "9:4687779763101165346",
-          "name": "dbImage",
-          "type": 9
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "4:2531795975164050181",
-      "lastPropertyId": "2:515379859392768464",
-      "name": "MinimumPrice",
-      "flags": 2,
-      "properties": [
-        {
-          "id": "1:3253817693505330129",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:515379859392768464",
-          "name": "sTypename",
-          "type": 9
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "5:7615219777695247696",
-      "lastPropertyId": "2:5043506590782276130",
-      "name": "PriceRange",
-      "flags": 2,
-      "properties": [
-        {
-          "id": "1:4842940623955405656",
-          "name": "id",
-          "type": 6,
-          "flags": 1
-        },
-        {
-          "id": "2:5043506590782276130",
-          "name": "sTypename",
-          "type": 9
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "6:2430519224252143484",
-      "lastPropertyId": "3:3134809412435267661",
-      "name": "Products",
-      "flags": 2,
-      "properties": [
-        {
-          "id": "1:7650875944518839319",
-          "name": "sTypename",
-          "type": 9
-        },
-        {
-          "id": "2:2399566513143615275",
-          "name": "totalCount",
+          "id": "3:3639545016066010393",
+          "name": "size",
           "type": 6
         },
         {
-          "id": "3:3134809412435267661",
+          "id": "4:783716074629593413",
           "name": "id",
-          "type": 6,
-          "flags": 1
-        }
-      ],
-      "relations": []
-    },
-    {
-      "id": "7:5941713448473129045",
-      "lastPropertyId": "4:7342272541044036243",
-      "name": "RegularPrice",
-      "flags": 2,
-      "properties": [
-        {
-          "id": "1:630350020288354942",
-          "name": "sTypename",
           "type": 9
         },
         {
-          "id": "2:9028240167063402289",
-          "name": "value",
-          "type": 6
-        },
-        {
-          "id": "3:959591740484989176",
-          "name": "currency",
+          "id": "5:2267988940125633921",
+          "name": "checksum",
           "type": 9
         },
         {
-          "id": "4:7342272541044036243",
-          "name": "id",
-          "type": 6,
-          "flags": 1
+          "id": "6:2936529805685644357",
+          "name": "contentType",
+          "type": 9
+        },
+        {
+          "id": "7:849529179275091260",
+          "name": "thumbnail",
+          "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "7:5941713448473129045",
-  "lastIndexId": "1:7253736171860853708",
+  "lastEntityId": "1:760989515856431261",
+  "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

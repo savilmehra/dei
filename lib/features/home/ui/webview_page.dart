@@ -14,20 +14,18 @@ import '../fielSpinResponse.dart';
 class WebViewPage extends StatefulWidget {
   static String routeName = "/webview";
 
-  static Route<String?> route() {
-    return MaterialPageRoute(
-      settings: RouteSettings(name: routeName),
-      builder: (context) {
-        return WebViewPage();
-      },
-    );
-  }
+  final String url;
+  final Function(String) updateCallBack;
+
+  const WebViewPage(
+      {super.key, required this.url, required this.updateCallBack});
 
   @override
   WebViewPageState createState() => WebViewPageState();
 }
 
-String ci = '''<!DOCTYPE html>
+String gertHtml(url) {
+  return '''<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -44,14 +42,12 @@ String ci = '''<!DOCTYPE html>
 
     <script>
 
-var srcUrl='';
-
 
 
 
 
  const editor = new filespin.ImageEditorInline("widget", {
-        src: "https://farm4.staticflickr.com/3075/3168662394_7d7103de7d_z_d.jpg",
+        src: '$url',
         onResult: (result) => {
 
 var dd=encodeURIComponent(result);
@@ -78,6 +74,7 @@ var dd=encodeURIComponent(result);
     </script>
   </body>
 </html>     ''';
+}
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -125,22 +122,18 @@ class WebViewPageState extends State<WebViewPage> {
             Uri.parse(
                 'https://dei-app-sandbox.filespin.io/api/v1/assets/new/content/original/upload'));
 
-
         request.headers
             .addAll({"X-FileSpin-Api-Key": "852c3af777b3481eb6b22a0e99d15c6c"});
-
-
 
         request.files
             .add(await http.MultipartFile.fromPath("file=@", file.path));
 
-
         var response = await request.send();
 
         var responsed = await http.Response.fromStream(response);
-        final fileSpinData =
-            FileSpinResponse.fromJson(jsonDecode(responsed.body));
-print(jsonDecode(responsed.body));
+        final fileSpinData = FileSpinResponse.fromJson(jsonDecode(responsed.body));
+         widget.updateCallBack(fileSpinData.files![0].thumbnail??"");
+         Navigator.pop(context);
         if (fileSpinData != null && fileSpinData.success) {
           print("SUCCESS");
         } else {
@@ -149,7 +142,7 @@ print(jsonDecode(responsed.body));
       });
       await _controller.setBackgroundColor(Colors.transparent);
       await _controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
-      await _controller.loadUrl(Uri.dataFromString(ci,
+      await _controller.loadUrl(Uri.dataFromString(gertHtml(widget.url),
               mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
           .toString());
 
