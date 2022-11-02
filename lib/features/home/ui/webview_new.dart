@@ -24,7 +24,14 @@ String ci='''<!DOCTYPE html>
     <script src="https://dev-react-18--image-editor-playground.netlify.app/filespin-image-editor.js"></script>
 
     <script>
-const editor = new filespin.ImageEditorInline("widget", {
+
+var srcUrl='';
+
+
+
+
+
+ const editor = new filespin.ImageEditorInline("widget", {
         src: 'https://picsum.photos/200/300',
         onResult: (result) => {
 
@@ -34,8 +41,8 @@ var dd=encodeURIComponent(result);
 
 
         },
-        backgrounds: ["https://firebasestorage.googleapis.com/v0/b/allbankifsccode2018new.appspot.com/o/modern-gold-background-free-vector.jpg?alt=media&token=df0131d9-43a1-4672-8193-ea7ac2b54b7e", "https://firebasestorage.googleapis.com/v0/b/allbankifsccode2018new.appspot.com/o/photo-1553095066-5014bc7b7f2d.jpg?alt=media&token=52fd5f78-05fb-4b9f-876d-68dfd307b2a1"],
-        watermarks: ["https://firebasestorage.googleapis.com/v0/b/allbankifsccode2018new.appspot.com/o/watermark.png?alt=media&token=d431bbd9-d375-476b-b097-059f3a2d0778"],
+        backgrounds: ["https://picsum.photos/id/237/200/300", "https://picsum.photos/200/300?grayscale"],
+        watermarks: ["https://picsum.photos/200/300/?blur", "https://picsum.photos/200/300.jpg"],
         api: {
           baseUrl: 'http://localhost:8000/',
           endpoints: {
@@ -56,28 +63,25 @@ var dd=encodeURIComponent(result);
 
 
 
-
 final navigatorKey = GlobalKey<NavigatorState>();
 
-
-
-class ExampleBrowser extends StatefulWidget {
-  static String routeName = "/ExampleBrowser";
+class WebViewPageN extends StatefulWidget {
+  static String routeName = "/webview";
 
   static Route<String?> route() {
     return MaterialPageRoute(
       settings: RouteSettings(name: routeName),
       builder: (context) {
-        return ExampleBrowser();
+        return WebViewPageN();
       },
     );
   }
 
   @override
-  State<ExampleBrowser> createState() => _ExampleBrowser();
+  WebViewPageNState createState() => WebViewPageNState();
 }
 
-class _ExampleBrowser extends State<ExampleBrowser> {
+class WebViewPageNState extends State<WebViewPageN> {
   final _controller = WebviewController();
   final _textController = TextEditingController();
   final List<StreamSubscription> _subscriptions = [];
@@ -86,20 +90,31 @@ class _ExampleBrowser extends State<ExampleBrowser> {
   @override
   void initState() {
     super.initState();
-
-    WidgetsBinding.instance?.addPostFrameCallback((_) {
-      initPlatformState();
-    });
-
+    initPlatformState();
   }
 
   Future<void> initPlatformState() async {
-print("called------------------------------------");
+    // Optionally initialize the webview environment using
+    // a custom user data directory
+    // and/or a custom browser executable directory
+    // and/or custom chromium command line flags
+    //await WebviewController.initializeEnvironment(
+    //    additionalArguments: '--show-fps-counter');
+
     try {
       await _controller.initialize();
       _subscriptions.add(_controller.url.listen((url) {
         _textController.text = url;
       }));
+
+      String fileText = await rootBundle.loadString('lib/assets/index.html');
+
+      _controller.webMessage.listen((event)
+
+      {
+        print('receivedddddddddddddddddddddddddddddddddddddddddddd');
+        print(event);
+      });
       await _controller.setBackgroundColor(Colors.transparent);
       await _controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
       await _controller.loadUrl(Uri.dataFromString(
@@ -107,51 +122,140 @@ print("called------------------------------------");
           mimeType: 'text/html',
           encoding: Encoding.getByName('utf-8')
       ).toString());
-      _controller.webMessage.listen((event)
-      {
-        print('receivedddddddddddddddddddddddddddddddddddddddddddd');
-        print(event);
-        Navigator.pop(context);
-      });
+
+      var json = '{"name":"John", "age":30, "car":null}';
+      // SENT DATA TO HTML CONTENT
+      _controller.postWebMessage(json);
+
       setState(() {});
     } on PlatformException catch (e) {
-     print("erooor-------------------------------------${e.toString()}");
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(
+            context: context,
+            builder: (_) => AlertDialog(
+              title: Text('Error'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Code: ${e.code}'),
+                  Text('Message: ${e.message}'),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Continue'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            ));
+      });
     }
   }
 
   Widget compositeView() {
-   return Card(
-            color: Colors.transparent,
-            elevation: 0,
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Stack(
-              children: [
-                Webview(
-                  _controller,
-                  permissionRequested: _onPermissionRequested,
+    if (!_controller.value.isInitialized) {
+      return const Text(
+        'Not Initialized',
+        style: TextStyle(
+          fontSize: 24.0,
+          fontWeight: FontWeight.w900,
+        ),
+      );
+    } else {
+      return Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Card(
+              elevation: 0,
+              child: Row(children: [
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'URL',
+                      contentPadding: EdgeInsets.all(10.0),
+                    ),
+                    textAlignVertical: TextAlignVertical.center,
+                    controller: _textController,
+                    onSubmitted: (val) {
+                      _controller.loadUrl(val);
+                    },
+                  ),
                 ),
-                _controller.value.isInitialized ?  StreamBuilder<LoadingState>(
-                    stream: _controller.loadingState,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData &&
-                          snapshot.data == LoadingState.loading) {
-                        return LinearProgressIndicator();
-                      } else {
-                        return SizedBox();
-                      }
-                    }):LinearProgressIndicator(),
-              ],
-            ));
-
-
-
+                IconButton(
+                  icon: Icon(Icons.refresh),
+                  splashRadius: 20,
+                  onPressed: () {
+                    _controller.reload();
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.developer_mode),
+                  tooltip: 'Open DevTools',
+                  splashRadius: 20,
+                  onPressed: () {
+                    _controller.openDevTools();
+                  },
+                )
+              ]),
+            ),
+            Expanded(
+                child: Card(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Stack(
+                      children: [
+                        Webview(
+                          _controller,
+                          permissionRequested: _onPermissionRequested,
+                        ),
+                        StreamBuilder<LoadingState>(
+                            stream: _controller.loadingState,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData &&
+                                  snapshot.data == LoadingState.loading) {
+                                return LinearProgressIndicator();
+                              } else {
+                                return SizedBox();
+                              }
+                            }),
+                      ],
+                    ))),
+          ],
+        ),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(
-          title: Text("DEI Edit Image")),
+      floatingActionButton: FloatingActionButton(
+        tooltip: _isWebviewSuspended ? 'Resume webview' : 'Suspend webview',
+        onPressed: () async {
+          if (_isWebviewSuspended) {
+            await _controller.resume();
+          } else {
+            await _controller.suspend();
+          }
+          setState(() {
+            _isWebviewSuspended = !_isWebviewSuspended;
+          });
+        },
+        child: Icon(_isWebviewSuspended ? Icons.play_arrow : Icons.pause),
+      ),
+      appBar: AppBar(
+          title: StreamBuilder<String>(
+            stream: _controller.title,
+            builder: (context, snapshot) {
+              return Text(
+                  snapshot.hasData ? snapshot.data! : 'WebView (Windows) Example');
+            },
+          )),
       body: Center(
         child: compositeView(),
       ),

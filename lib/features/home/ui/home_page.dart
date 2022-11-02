@@ -130,7 +130,7 @@ late BuildContext ctx;
             : index == 1
                 ? Navigator.pushNamed(
                     context,
-          ExampleBrowser.routeName,
+          WebViewPage.routeName,
                   )
                 : Navigator.pushNamed(
                     context,

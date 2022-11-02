@@ -13,7 +13,7 @@ import 'features/login/ui/login_page.dart';
 import 'features/login/ui/splash_screen.dart';
 
 final Map<String, WidgetBuilder> routes = {
-  ExampleBrowser.routeName: (context) => ExampleBrowser(),
+
   LofinPage.routeName: (context) => LofinPage(),
   HomePage.routeName: (context) => HomePage(),
   LanguageSettingPage.routeName:(context) => LanguageSettingPage(),
