@@ -6,6 +6,9 @@ list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus_windows
   local_auth_windows
   objectbox_sync_flutter_libs
+  screen_retriever
+  webview_windows
+  window_manager
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

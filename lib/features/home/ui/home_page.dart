@@ -1,3 +1,4 @@
+import 'package:dei/features/home/ui/webview_new.dart';
 import 'package:dei/features/home/ui/webview_page.dart';
 
 import 'package:flutter/material.dart';
@@ -129,7 +130,7 @@ late BuildContext ctx;
             : index == 1
                 ? Navigator.pushNamed(
                     context,
-                    WebViewPage.routeName,
+          ExampleBrowser.routeName,
                   )
                 : Navigator.pushNamed(
                     context,

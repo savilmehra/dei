@@ -917,6 +917,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.5"
+  screen_retriever:
+    dependency: transitive
+    description:
+      name: screen_retriever
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -1146,6 +1153,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.4"
+  webview_windows:
+    dependency: "direct main"
+    description:
+      name: webview_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.9"
   win32:
     dependency: transitive
     description:
@@ -1153,6 +1167,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0"
+  window_manager:
+    dependency: "direct main"
+    description:
+      name: window_manager
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.7"
   xdg_directories:
     dependency: transitive
     description:
