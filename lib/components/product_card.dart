@@ -1,9 +1,7 @@
-
-
+import 'package:dei/features/home/fielSpinResponse.dart';
 import 'package:flutter/material.dart';
 
 
-import '../features/home/fielSpinResponse.dart';
 import '../utilities/size_config.dart';
 import 'cache_network_img.dart';
 
@@ -20,7 +18,6 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: EdgeInsets.only(
 
@@ -44,10 +41,16 @@ class ProductCard extends StatelessWidget {
                   child: Hero(
                     tag: product.thumbnail.hashCode,
 
-                    child: imgBuilder(product.thumbnail??""),
+                    child: imgBuilder(product.thumbnail!??""),
                   ),
                 ),
               ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              product.name??"",
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: getProportionateScreenWidth(20),fontWeight: FontWeight.bold),
+              maxLines: 1,
             ),
 
           ],

@@ -129,25 +129,7 @@ class ObjectBoxSyncClient {
 
   ObjectBoxSyncClient() {
     getApplicationDocumentsDirectory().then((dir) {
-    /*  openStore(
-        directory: join(dir.path, 'objectbox'),
-      ).then((Store store) {
-        _storeCLoud = store;
-        Sync.client(
-          store,
-          'ws://35.154.207.75:9999',
-          SyncCredentials.none(),
-        ).start();
-print("open-------------------------new ");
-        productBox = store.box<FileSpinFiles>();
 
-       stream = productBox!
-            .query()
-            .watch(triggerImmediately: true)
-            .map((event) => event.find());
-
-      });
-*/
       print(join(dir.path, 'objectbox'));
       openStore(
         directory: join(dir.path, 'objectbox'),
@@ -168,16 +150,12 @@ print("open-------------------------new ");
   }
 
   Future<int> update(FileSpinFiles item) async {
-
-  //  productBoxCLoud!.put(item);
+    //  productBoxCLoud!.put(item);
     return productBox!.put(item);
   }
 
   Future<List<int>> insert(List<FileSpinFiles> products) async {
-
-
-   // productBox!.putMany(products);
-
+    // productBox!.putMany(products);
     return productBox!.putMany(products);
   }
 

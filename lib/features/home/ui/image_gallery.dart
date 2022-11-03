@@ -43,39 +43,9 @@ class ThemeSettingsPageState extends State<GalleryImages> {
   void initState() {
     super.initState();
     cubit = context.read<ProductCubit>();
-    authenticationService = AuthenticationService(isAuthenticated: (isAuth) {
-      if (!isAuth) {
-        showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
 
-              actions: [
-                TextButton(
-                  onPressed: () {
-
-                    SystemNavigator.pop();
-                  },
-                  child: const Text("Cancel"),)
-                ,
-                TextButton(
-                  onPressed: () {
-                    authenticationService.checkSupport();
-                    Navigator.pop(context);
-                  }, child: Text("Unlock"),
-                )
-              ],
-              title: const Text(
-                'Authentication Failed',
-                style: TextStyle(color: Colors.blue,fontSize: 18),
-              ),
-              content: const Text(
-                  'Please Authenticate Yourself or Connect to internet '),
-            ));
-      }
-    });
-
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) =>   addData());
+  /*  WidgetsBinding.instance
+        .addPostFrameCallback((_) =>   addData());*/
   }
 
 
@@ -92,23 +62,30 @@ class ThemeSettingsPageState extends State<GalleryImages> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         appBar: AppBar(
           title: const Text( "Images Gallery"),
+actions: [
 
+  IconButton(onPressed: (){
+    addData();
+  }, icon: const Icon(Icons.upload))
+
+
+
+],
         ),
         body: CustomScrollView(
           slivers: <Widget>[
             SliverList(
                 delegate: SliverChildListDelegate([
-                  SizedBox(height: getProportionateScreenHeight(50)),
+                  SizedBox(height: getProportionateScreenHeight(10)),
 
                   BlocProvider(
                     create: (_) => cubit,
                     child: ProductShowCasePresenter(
                       listType: ListType.grid,
-                      title:"Click To Edit on any image",
+                      title:"",
                       listItem: getListItem,
                     ),
                   ),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-
 import '../../../universal/graphql/graph_ql_service.dart';
 import '../../home/fielSpinResponse.dart';
 import '../../home/ui/home_page.dart';
@@ -32,7 +31,6 @@ class ProductShowCasePresenter extends StatefulWidget {
 class ProductShowCasteState extends State<ProductShowCasePresenter> {
   @override
   void initState() {
-
     BlocProvider.of<ProductCubit>(context).getLocalData();
 
     super.initState();
@@ -42,18 +40,21 @@ class ProductShowCasteState extends State<ProductShowCasePresenter> {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, MainState>(builder: (context, state) {
       return ProductShowCaseWidget(
+        longpress: (FileSpinFiles item) {
+          item.name =
+              ' ${DateTime.now().hour} :  ${DateTime.now().minute} :  ${DateTime.now().second}';
+          BlocProvider.of<ProductCubit>(context).update(item);
+        },
         callBack: (FileSpinFiles item) {
-
-
-          Navigator.push(
+          /*   Navigator.push(
             context,
             MaterialPageRoute(builder: (context) =>  WebViewPage(updateCallBack: (url){
 
 
             }, url: item.thumbnail??"",)),
           );
-
-          //BlocProvider.of<ProductCubit>(context).deleteItem(item);
+*/
+          BlocProvider.of<ProductCubit>(context).deleteItem(item);
         },
         height: widget.height,
         listType: widget.listType,

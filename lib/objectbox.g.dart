@@ -20,44 +20,44 @@ export 'package:objectbox/objectbox.dart'; // so that callers only have to impor
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 3464243868509585911),
+      id: const IdUid(1, 3737999880439799885),
       name: 'FileSpinFiles',
-      lastPropertyId: const IdUid(7, 2394038595061322414),
+      lastPropertyId: const IdUid(7, 1778608931448153583),
       flags: 2,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 2723055501762845945),
+            id: const IdUid(1, 7602923744987290993),
             name: 'ids',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 225836501982460879),
+            id: const IdUid(2, 3337484022396743916),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 5801466558235593996),
+            id: const IdUid(3, 3430659839469253394),
             name: 'size',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 4411547839381681685),
+            id: const IdUid(4, 1562543606458148077),
             name: 'id',
             type: 9,
             flags: 34848,
-            indexId: const IdUid(1, 5432422921348563717)),
+            indexId: const IdUid(1, 6946591246515141428)),
         ModelProperty(
-            id: const IdUid(5, 4083266419783766384),
+            id: const IdUid(5, 4604758623869600085),
             name: 'checksum',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 968289949259257810),
+            id: const IdUid(6, 4365271686253380443),
             name: 'contentType',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(7, 2394038595061322414),
+            id: const IdUid(7, 1778608931448153583),
             name: 'thumbnail',
             type: 9,
             flags: 0)
@@ -86,8 +86,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 3464243868509585911),
-      lastIndexId: const IdUid(1, 5432422921348563717),
+      lastEntityId: const IdUid(1, 3737999880439799885),
+      lastIndexId: const IdUid(1, 6946591246515141428),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],

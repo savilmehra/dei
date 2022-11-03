@@ -4,44 +4,46 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:760989515856431261",
-      "lastPropertyId": "7:849529179275091260",
+      "id": "1:3737999880439799885",
+      "lastPropertyId": "7:1778608931448153583",
       "name": "FileSpinFiles",
       "flags": 2,
       "properties": [
         {
-          "id": "1:6830915192630785858",
+          "id": "1:7602923744987290993",
           "name": "ids",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:8503637155375841210",
+          "id": "2:3337484022396743916",
           "name": "name",
           "type": 9
         },
         {
-          "id": "3:3639545016066010393",
+          "id": "3:3430659839469253394",
           "name": "size",
           "type": 6
         },
         {
-          "id": "4:783716074629593413",
+          "id": "4:1562543606458148077",
           "name": "id",
-          "type": 9
+          "type": 9,
+          "flags": 34848,
+          "indexId": "1:6946591246515141428"
         },
         {
-          "id": "5:2267988940125633921",
+          "id": "5:4604758623869600085",
           "name": "checksum",
           "type": 9
         },
         {
-          "id": "6:2936529805685644357",
+          "id": "6:4365271686253380443",
           "name": "contentType",
           "type": 9
         },
         {
-          "id": "7:849529179275091260",
+          "id": "7:1778608931448153583",
           "name": "thumbnail",
           "type": 9
         }
@@ -49,8 +51,8 @@
       "relations": []
     }
   ],
-  "lastEntityId": "1:760989515856431261",
-  "lastIndexId": "0:0",
+  "lastEntityId": "1:3737999880439799885",
+  "lastIndexId": "1:6946591246515141428",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
