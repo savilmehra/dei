@@ -49,6 +49,8 @@ class ProductShowCasteState extends State<ProductShowCasePresenter> {
           /*   Navigator.push(
             context,
             MaterialPageRoute(builder: (context) =>  WebViewPage(updateCallBack: (url){
+              item.thumbnail=url;
+              BlocProvider.of<ProductCubit>(context).update(item);
 
 
             }, url: item.thumbnail??"",)),
