@@ -56,8 +56,8 @@ var dd=encodeURIComponent(result);
 
 
         },
-        backgrounds: ["https://i.imgur.com/CzXTtJV.jpg"],
-        watermarks: ["https://i.imgur.com/OB0y6MR.jpg"],
+        backgrounds: ["https://dei-sandbox-cdn.filespin.io/api/v1/files/content/1d3d7fd01c964515a2a8809224f9ef5c?key=original&expiry=3815001712&delivery=download&accessId=IZJTAMBQGAYDAMBQGAYDAMBQGAYDCMBT&signature=WJqJ8S6iltlO2jnp3lcSkwNsDzI%3D"],
+        watermarks: ["https://dei-sandbox-cdn.filespin.io/api/v1/files/content/90cc3a12ef7945a3acab8d28b228cf59?key=original&expiry=3815002232&delivery=download&accessId=IZJTAMBQGAYDAMBQGAYDAMBQGAYDCMBT&signature=tt_nlji9zhy9Ip14zGlM-5Ley0Q%3D"],
         api: {
           baseUrl: 'http://localhost:8000/',
           endpoints: {
@@ -92,12 +92,6 @@ class WebViewPageState extends State<WebViewPage> {
   }
 
   Future<void> initPlatformState() async {
-    // Optionally initialize the webview environment using
-    // a custom user data directory
-    // and/or a custom browser executable directory
-    // and/or custom chromium command line flags
-    //await WebviewController.initializeEnvironment(
-    //    additionalArguments: '--show-fps-counter');
 
     try {
       await _controller.initialize();
@@ -131,25 +125,42 @@ class WebViewPageState extends State<WebViewPage> {
         var response = await request.send();
 
         var responsed = await http.Response.fromStream(response);
+
+
+        print(responsed.body);
         final fileSpinData = FileSpinResponse.fromJson(jsonDecode(responsed.body));
-         widget.updateCallBack(fileSpinData.files![0].thumbnail??"");
-         Navigator.pop(context);
+
+
+        final newurl= await http.get(
+            Uri.parse(
+            "https://dei-app-sandbox.filespin.io/api/v1/assets/${fileSpinData.files![0].id}/get_link?key=original&expiry=MAX&accessId=IZJTAMBQGAYDAMBQGAYDAMBQGAYDANKT")
+
+        ,
+          headers: {
+            "X-FileSpin-Api-Key": "852c3af777b3481eb6b22a0e99d15c6c"
+          }
+
+        );
+
+print(newurl.body);
+Navigator.pop(context);
+         widget.updateCallBack(newurl.body);
+
+
+
+
+
+
         if (fileSpinData != null && fileSpinData.success) {
           print("SUCCESS");
         } else {
           print("ERROR");
         }
       });
-      await _controller.setBackgroundColor(Colors.transparent);
       await _controller.setPopupWindowPolicy(WebviewPopupWindowPolicy.deny);
       await _controller.loadUrl(Uri.dataFromString(gertHtml(widget.url),
               mimeType: 'text/html', encoding: Encoding.getByName('utf-8'))
           .toString());
-
-      var json = '{"name":"John", "age":30, "car":null}';
-      // SENT DATA TO HTML CONTENT
-      _controller.postWebMessage(json);
-
       setState(() {});
     } on PlatformException catch (e) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -178,9 +189,13 @@ class WebViewPageState extends State<WebViewPage> {
     }
   }
 
+
   Widget compositeView() {
-    return _controller.value.isInitialized
-        ? Stack(
+
+
+
+
+    return  Stack(
             children: [
               Webview(
                 _controller,
@@ -197,8 +212,7 @@ class WebViewPageState extends State<WebViewPage> {
                     }
                   }),
             ],
-          )
-        : LinearProgressIndicator();
+          );
   }
 
   @override

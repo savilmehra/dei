@@ -74,8 +74,8 @@ class ThemeSettingsPageState extends State<GalleryImages> {
       }
     });
 
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) =>   addData());
+   /* WidgetsBinding.instance
+        .addPostFrameCallback((_) =>   addData());*/
   }
 
 
