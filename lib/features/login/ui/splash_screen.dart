@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +9,9 @@ import '../../../utilities/size_config.dart';
 import 'package:config/Config.dart';
 
 import '../../dashboard/presentation/home_screen.dart';
+import '../../home/ui/image_gallery.dart';
 import 'login_page.dart';
+
 class SplashScreen extends StatefulWidget {
   static String routeName = '/splashScreen';
 
@@ -23,31 +27,32 @@ class SplashScreenState extends State<SplashScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       SizeConfig().init(context);
 
-      setTimer();});
+      setTimer();
+    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:mainColor ,
+      backgroundColor: mainColor,
       body: Stack(
         children: [
-
           Container(
-
             child: Center(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-                    Text(
-                      APP_NAME,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.white,fontSize: getProportionateScreenWidth(36),),
-                    ),
-                  ],
-                )),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  APP_NAME,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                        color: Colors.white,
+                        fontSize: getProportionateScreenWidth(36),
+                      ),
+                ),
+              ],
+            )),
           ),
         ],
       ),
@@ -57,11 +62,16 @@ class SplashScreenState extends State<SplashScreen> {
   Future<void> setTimer() async {
     Timer(
         const Duration(seconds: 5),
-            () =>
-                Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen(screen: "manager",)))
-    );
-
-
-
+        () => !Platform.isWindows
+            ? Navigator.pushNamed(
+                context,
+                GalleryImages.routeName,
+              )
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => const HomeScreen(
+                          screen: "manager",
+                        ))));
   }
 }
