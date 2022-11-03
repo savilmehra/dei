@@ -137,7 +137,7 @@ class ObjectBoxSyncClient {
         _store = store;
         Sync.client(
           store,
-          'ws://35.154.207.75:9999',
+          'ws://$syncServerIp:9999',
           SyncCredentials.none(),
         ).start();
         productBox = store.box<FileSpinFiles>();
