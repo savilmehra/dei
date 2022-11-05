@@ -54,7 +54,7 @@ dependencies:
   flutter_isolate: ^2.0.3
   flutter_svg: ^1.1.5
   window_manager: ^0.2.7
-  webview_windows: ^0.1.9
+  webview_windows: ^0.2.2
   fluttertoast: ^8.0.8
 
   http: ^0.13.3

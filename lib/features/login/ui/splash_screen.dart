@@ -10,6 +10,7 @@ import 'package:config/Config.dart';
 
 import '../../dashboard/presentation/home_screen.dart';
 import '../../home/ui/image_gallery.dart';
+import '../../home/ui/webview_page.dart';
 import 'login_page.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -62,16 +63,11 @@ class SplashScreenState extends State<SplashScreen> {
   Future<void> setTimer() async {
     Timer(
         const Duration(seconds: 5),
-        () => !Platform.isWindows
-            ? Navigator.pushNamed(
-                context,
-                GalleryImages.routeName,
-              )
-            : Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (_) => const HomeScreen(
-                          screen: "manager",
-                        ))));
+        () =>     Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) =>  WebViewPage(updateCallBack: (url){
+
+          }, url: "https://picsum.photos/200/300",)),
+        ));
   }
 }

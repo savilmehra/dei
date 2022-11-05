@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-const APP_NAME = "DEI APP";
+const APP_NAME = "DEI";
 const iconurl="https://firebasestorage.googleapis.com/v0/b/allbankifsccode2018new.appspot.com/o/laptop.png?alt=media&token=c4901bd0-315c-4171-b0b3-578107b29bd7";
 
 const  mainColor = Color(0xff1A237E);
