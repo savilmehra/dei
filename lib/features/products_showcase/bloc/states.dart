@@ -1,5 +1,6 @@
-import '../../home/fielSpinResponse.dart';
 
+
+import '../models/fielSpinResponse.dart';
 
 abstract class MainState {}
 

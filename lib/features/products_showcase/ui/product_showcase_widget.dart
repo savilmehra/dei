@@ -3,11 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/horizontal_product_loader.dart';
-import '../../../utilities/size_config.dart';
-import '../../home/fielSpinResponse.dart';
-import '../../home/ui/webview_page.dart';
-import '../bloc/product_cubit.dart';
+
 import '../bloc/states.dart';
+import '../models/fielSpinResponse.dart';
 
 enum ListType { grid, vertical, horizontal }
 

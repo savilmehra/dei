@@ -1,39 +1,24 @@
-
-
 import 'package:clean_framework/clean_framework.dart';
-
 import 'package:dei/features/products_showcase/bloc/states.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../../locator.dart';
-import '../../../universal/graphql/graph_ql_service.dart';
 import '../../../universal/graphql/repository_graphql.dart';
 
-import '../../home/fielSpinResponse.dart';
-import '../db/out_box_helper.dart';
 import '../db/sync_client_outbox.dart';
+import '../models/fielSpinResponse.dart';
 
 
 class ProductCubit extends Cubit<MainState> implements UseCase {
   late RepositoryScope scope;
   var outBoxHelper = GetIt.instance<ObjectBoxSyncClient>();
-
   ProductCubit() : super(LoadingState()) {
- /*   scope = ApplicationLocator()
-        .repositoryGql
-        .create<ProductEntity>(ProductEntity(), _notifySubscribers);*/
     listenStream();
   }
-
   listenStream() async {
 
     if( outBoxHelper.stream!=null) {
       outBoxHelper.stream.listen((entity) async {
-
-      print("sync called");
-      if (entity == null || entity.isEmpty) {
+        if (entity == null || entity.isEmpty) {
         emit(EmptyState("No data Found"));
       } else {
         emit(LoadedState(products: entity));
@@ -42,50 +27,16 @@ class ProductCubit extends Cubit<MainState> implements UseCase {
 
     }
   }
-
-  insert(
-      {String? token,
-      Map<String, String>? header,
-      required RequestType requestType,
-      required String queryString,
-      required Function() getData}) async {
-
-
-
-
-
-
- /*   await ApplicationLocator().repositoryGql.runServiceAdapter(
-        scope,
-        ProductAdapter(token, header,
-            requestType: RequestType.query, queryString: queryString));*/
-  }
-
   Future<void> getLocalData() async {
     var entity = await outBoxHelper.queryAll();
     if (entity != null && entity.isNotEmpty) {
       emit(LoadedState(products: entity));
     }
   }
-
-  void _notifySubscribers(entity) {
-   // ProductEntity entity = ApplicationLocator().repositoryGql.get(scope);
-
-    if (entity.data.products != null) {
-      outBoxHelper.insert(entity.data.products!.items!);
-    }
-  }
-
-
   update(FileSpinFiles item) async {
-
     await  outBoxHelper.update(item);
-
-
   }
   deleteItem(FileSpinFiles item) async {
-
-    print('${item.id} item id to delete');
     await outBoxHelper.delete(item.ids??0);
   }
 }

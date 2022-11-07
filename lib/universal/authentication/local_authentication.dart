@@ -9,10 +9,8 @@ import 'package:local_auth/local_auth.dart';
 class AuthenticationService {
   final LocalAuthentication auth = LocalAuthentication();
   final Function(bool) isAuthenticated;
-
   AuthenticationService({required this.isAuthenticated})
   {
-
     checkSupport();
   }
 
@@ -26,8 +24,7 @@ class AuthenticationService {
             isSupported? authenticate(): isAuthenticated(false);
           },
     );
-    final List<BiometricType> availableBiometrics =
-    await auth.getAvailableBiometrics();
+    final List<BiometricType> availableBiometrics = await auth.getAvailableBiometrics();
 
 
   }

@@ -1,7 +1,5 @@
-import 'package:dei/features/home/fielSpinResponse.dart';
 import 'package:flutter/material.dart';
-
-
+import '../features/products_showcase/models/fielSpinResponse.dart';
 import '../utilities/size_config.dart';
 import 'cache_network_img.dart';
 
